@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 import { BytesPipe } from './pipes/bytes.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
     MatDialogModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   entryComponents: [
     ConfirmDialogComponent,

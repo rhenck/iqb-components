@@ -1,0 +1,88 @@
+<h1>IQB Components - Showcase</h1>
+
+<div>
+
+  <mat-card>
+    <mat-card-title>tc-confirm-dialog</mat-card-title>
+    <mat-card-subtitle>A simple confirmation dialogue.</mat-card-subtitle>
+
+    <mat-card-content>
+
+      <p>Settings</p>
+
+      <form>
+
+        <mat-form-field>
+          <input matInput placeholder="title" [(ngModel)]="confirmDialogData.title" name="title">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="content" [(ngModel)]="confirmDialogData.content" name="content">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="confirmbuttonlabel" [(ngModel)]="confirmDialogData.confirmbuttonlabel" name="label">
+        </mat-form-field>
+        <br>
+        <mat-checkbox [(ngModel)]="confirmDialogData.showcancel" name="cancel">showcancel</mat-checkbox>
+        <br>
+      </form>
+
+      <div class="result">Result: {{confirmDialogResult}}</div>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="openConfirmDialog()">Open Dialogue</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>tc-message-dialog</mat-card-title>
+    <mat-card-subtitle>A simple message dialogue.</mat-card-subtitle>
+    warning
+    <mat-card-content>
+
+      <p>Settings</p>
+
+      <form>
+
+        <mat-form-field>
+          <mat-label>MessageType</mat-label>
+          <mat-select>
+            <mat-option value="0">error</mat-option>
+            <mat-option value="1">warning</mat-option>
+            <mat-option value="2">info</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="title" [(ngModel)]="messageDialogData.title" name="title">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="content" [(ngModel)]="messageDialogData.content" name="content">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="closebuttonlabel" [(ngModel)]="messageDialogData.closebuttonlabel" name="label">
+        </mat-form-field>
+        <br>
+
+      </form>
+
+      <div class="result">Result: {{messageDialogResult}}</div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="openMessageDialog()">Open Dialogue</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</div>
+
+
+
+
