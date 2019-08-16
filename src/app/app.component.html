@@ -81,6 +81,31 @@
 
   </mat-card>
 
+  <mat-card>
+    <mat-card-title>BytesPipe</mat-card-title>
+    <mat-card-subtitle>A pipe for human readable file sizes</mat-card-subtitle>
+    warning
+    <mat-card-content>
+
+      <p>Settings</p>
+
+      <form>
+
+        <mat-form-field>
+          <input matInput placeholder="Test Values" [(ngModel)]="pipeBytesValue" name="pipetestvalues">
+        </mat-form-field>
+
+      </form>
+
+      <div class="result">
+        Result:
+        <ul><li *ngFor="let value of applyPipeBytes()">{{value | bytes}}</li></ul>
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+
 </div>
 
 
