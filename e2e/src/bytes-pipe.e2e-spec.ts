@@ -8,7 +8,7 @@ describe('Bytes Pipe', () => {
         page = new ShowcasePage();
     });
 
-    fit('should calculate bytes successfully', async () => {
+    it('should calculate bytes successfully', async () => {
 
         await ShowcasePage.navigateTo();
 
@@ -19,7 +19,8 @@ describe('Bytes Pipe', () => {
         const resultItems = await containerCard.all(by.css('.result ul li'));
         await expect(resultItems[0].getText()).toBe('5.0 bytes');
         await expect(resultItems[1].getText()).toBe('1.0 KB');
-        await expect(resultItems[2].getText()).toBe('10.0 TB');
+        await expect(resultItems[2].getText()).toBe('1.5 KB');
+        await expect(resultItems[3].getText()).toBe('10.0 TB');
     });
 
     afterEach(async () => {
