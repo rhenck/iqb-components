@@ -28,5 +28,5 @@ This contains a showcase App for developers to try out each component and also f
 
 ### default ports
 
-* deployment: 4200
+* deployment: 4207
 * e2e-tests: 4208
