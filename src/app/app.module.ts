@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { IqbCommonModule } from './components/iqb-common.module';
+import { Showcase } from './showcase.component';
+import { IqbComponentsModule } from './components/iqb-components.module';
+
 import {
     MatButtonModule,
     MatCardModule,
@@ -12,16 +13,17 @@ import {
     MatFormFieldModule, MatIconModule,
     MatInputModule, MatSelectModule
 } from '@angular/material';
+
 import {FormsModule} from '@angular/forms';
 import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
-        AppComponent
+        Showcase
     ],
     imports: [
         BrowserModule,
-        IqbCommonModule,
+        IqbComponentsModule,
         MatCardModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -36,6 +38,6 @@ import {FlexModule} from '@angular/flex-layout';
         MatIconModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [Showcase]
 })
 export class AppModule { }

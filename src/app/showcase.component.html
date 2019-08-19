@@ -13,15 +13,21 @@
       <form>
 
         <mat-form-field>
-          <input matInput placeholder="title" [(ngModel)]="confirmDialogData.title" name="title">
+          <label>
+            <input matInput placeholder="title" [(ngModel)]="confirmDialogData.title" name="title">
+          </label>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput placeholder="content" [(ngModel)]="confirmDialogData.content" name="content">
+          <label>
+            <input matInput placeholder="content" [(ngModel)]="confirmDialogData.content" name="content">
+          </label>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput placeholder="confirmbuttonlabel" [(ngModel)]="confirmDialogData.confirmbuttonlabel" name="label">
+          <label>
+            <input matInput placeholder="confirmbuttonlabel" [(ngModel)]="confirmDialogData.confirmbuttonlabel" name="label">
+          </label>
         </mat-form-field>
         <br>
         <mat-checkbox [(ngModel)]="confirmDialogData.showcancel" name="cancel">showcancel</mat-checkbox>
@@ -41,7 +47,7 @@
   <mat-card>
     <mat-card-title>tc-message-dialog</mat-card-title>
     <mat-card-subtitle>A simple message dialogue.</mat-card-subtitle>
-    warning
+
     <mat-card-content>
 
       <p>Settings</p>
@@ -58,15 +64,21 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="title" [(ngModel)]="messageDialogData.title" name="title">
+          <label>
+            <input matInput placeholder="title" [(ngModel)]="messageDialogData.title" name="title">
+          </label>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput placeholder="content" [(ngModel)]="messageDialogData.content" name="content">
+          <label>
+            <input matInput placeholder="content" [(ngModel)]="messageDialogData.content" name="content">
+          </label>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <input matInput placeholder="closebuttonlabel" [(ngModel)]="messageDialogData.closebuttonlabel" name="label">
+          <label>
+            <input matInput placeholder="closebuttonlabel" [(ngModel)]="messageDialogData.closebuttonlabel" name="label">
+          </label>
         </mat-form-field>
         <br>
 
@@ -84,7 +96,7 @@
   <mat-card>
     <mat-card-title>BytesPipe</mat-card-title>
     <mat-card-subtitle>A pipe for human readable file sizes</mat-card-subtitle>
-    warning
+
     <mat-card-content>
 
       <p>Settings</p>
@@ -92,7 +104,9 @@
       <form>
 
         <mat-form-field>
-          <input matInput placeholder="Test Values" [(ngModel)]="pipeBytesValue" name="pipetestvalues">
+          <label>
+            <input matInput placeholder="Test Values" [(ngModel)]="pipeBytesValue" name="pipetestvalues">
+          </label>
         </mat-form-field>
 
       </form>

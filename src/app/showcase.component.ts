@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material';
-import { MessageDialogComponent } from './components/message-dialog/message-dialog.component';
-import { from } from 'rxjs';
-import { BytesPipe } from './components/pipes/bytes.pipe';
+import { ConfirmDialogComponent, MessageDialogComponent } from './components';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './showcase.component.html',
+  styleUrls: ['./showcase.component.scss']
 })
-export class AppComponent {
+// tslint:disable-next-line:component-class-suffix
+export class Showcase {
 
   constructor(public dialog: MatDialog) {}
   title = 'iqb-components';
@@ -63,7 +61,7 @@ export class AppComponent {
   applyPipeBytes() {
     return this.pipeBytesValue
         .split(',')
-        .map(item => parseInt(item));
+        .map(item => parseInt(item, 10));
 
 
   }
