@@ -116,7 +116,8 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "iqb-components:serve"
+            "devServerTarget": "iqb-components:serve",
+            "port": 4208
           },
           "configurations": {
             "production": {

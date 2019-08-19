@@ -2,7 +2,7 @@
 
 <div>
 
-  <mat-card>
+  <mat-card id="confirmDialog">
     <mat-card-title>tc-confirm-dialog</mat-card-title>
     <mat-card-subtitle>A simple confirmation dialogue.</mat-card-subtitle>
 
@@ -26,11 +26,11 @@
         <br>
         <mat-form-field>
           <label>
-            <input matInput placeholder="confirmbuttonlabel" [(ngModel)]="confirmDialogData.confirmbuttonlabel" name="label">
+            <input matInput placeholder="confirmbuttonlabel" [(ngModel)]="confirmDialogData.confirmbuttonlabel" name="confirmbuttonlabel">
           </label>
         </mat-form-field>
         <br>
-        <mat-checkbox [(ngModel)]="confirmDialogData.showcancel" name="cancel">showcancel</mat-checkbox>
+        <mat-checkbox [(ngModel)]="confirmDialogData.showcancel" name="showcancel">showcancel</mat-checkbox>
         <br>
       </form>
 
@@ -44,7 +44,7 @@
 
   </mat-card>
 
-  <mat-card>
+  <mat-card id="messageDialog">
     <mat-card-title>tc-message-dialog</mat-card-title>
     <mat-card-subtitle>A simple message dialogue.</mat-card-subtitle>
 
@@ -56,10 +56,10 @@
 
         <mat-form-field>
           <mat-label>MessageType</mat-label>
-          <mat-select>
-            <mat-option value="0">error</mat-option>
-            <mat-option value="1">warning</mat-option>
-            <mat-option value="2">info</mat-option>
+          <mat-select [(ngModel)]="messageDialogData.type" name="type">
+            <mat-option [value]="0">error</mat-option>
+            <mat-option [value]="1">warning</mat-option>
+            <mat-option [value]="2">info</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -77,7 +77,7 @@
         <br>
         <mat-form-field>
           <label>
-            <input matInput placeholder="closebuttonlabel" [(ngModel)]="messageDialogData.closebuttonlabel" name="label">
+            <input matInput placeholder="closebuttonlabel" [(ngModel)]="messageDialogData.closebuttonlabel" name="closebuttonlabel">
           </label>
         </mat-form-field>
         <br>
@@ -85,6 +85,7 @@
       </form>
 
       <div class="result">Result: {{messageDialogResult}}</div>
+      {{messageDialogData.title}}
     </mat-card-content>
 
     <mat-card-actions>
@@ -93,7 +94,7 @@
 
   </mat-card>
 
-  <mat-card>
+  <mat-card id="bytesPipe">
     <mat-card-title>BytesPipe</mat-card-title>
     <mat-card-subtitle>A pipe for human readable file sizes</mat-card-subtitle>
 

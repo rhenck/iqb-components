@@ -23,7 +23,7 @@ export class Showcase {
   confirmDialogResult: any;
 
   messageDialogData = {
-    type: 1,
+    type: 2,
     title: 'Message',
     content: 'This is some nice Dialogue',
     closebuttonlabel: 'Screw it'
@@ -36,7 +36,7 @@ export class Showcase {
   openConfirmDialog(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: 'auto',
-      data: this.confirmDialogData
+      data: Object.assign({}, this.confirmDialogData)
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -46,6 +46,7 @@ export class Showcase {
   }
 
   openMessageDialog(): void {
+    console.log(this.messageDialogData);
     const dialogRef = this.dialog.open(MessageDialogComponent, {
       width: 'auto',
       data: Object.assign({}, this.messageDialogData),

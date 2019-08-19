@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to iqb-components!');
+  it('should display welcome message', async () => {
+    await AppPage.navigateTo();
+    await expect(AppPage.getTitleText()).toEqual('IQB Components - Showcase');
   });
 
   afterEach(async () => {
