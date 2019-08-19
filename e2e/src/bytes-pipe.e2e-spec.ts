@@ -1,20 +1,20 @@
-import { AppPage } from './app.po';
+import { ShowcasePage } from './showcase.po';
 import { browser, by, element, logging } from 'protractor';
 
 describe('Bytes Pipe', () => {
-    let page: AppPage;
+    let page: ShowcasePage;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new ShowcasePage();
     });
 
     fit('should calculate bytes successfully', async () => {
 
-        await AppPage.navigateTo();
+        await ShowcasePage.navigateTo();
 
         const containerCard = element(by.id('bytesPipe'));
 
-        await AppPage.typeIn(containerCard, 'pipetestvalues', '5, 1024, 1536, 11000000000000');
+        await ShowcasePage.typeIn(containerCard, 'pipetestvalues', '5, 1024, 1536, 11000000000000');
 
         const resultItems = await containerCard.all(by.css('.result ul li'));
         await expect(resultItems[0].getText()).toBe('5.0 bytes');

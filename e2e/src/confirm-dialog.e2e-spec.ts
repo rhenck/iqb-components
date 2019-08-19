@@ -1,24 +1,24 @@
-import { AppPage } from './app.po';
+import { ShowcasePage } from './showcase.po';
 import { browser, by, element, logging, ExpectedConditions as EC } from 'protractor';
 
 describe('Confirm Dialog', () => {
-    let page: AppPage;
+    let page: ShowcasePage;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new ShowcasePage();
     });
 
     it('should pop up and set buttons and labels according to setup.', async () => {
 
-        await AppPage.navigateTo();
+        await ShowcasePage.navigateTo();
 
         const containerCard = element(by.id('confirmDialog'));
 
-        await AppPage.typeIn(containerCard, 'title', 'abc');
-        await AppPage.typeIn(containerCard, 'content', 'def');
-        await AppPage.typeIn(containerCard, 'confirmbuttonlabel', 'ghi');
+        await ShowcasePage.typeIn(containerCard, 'title', 'abc');
+        await ShowcasePage.typeIn(containerCard, 'content', 'def');
+        await ShowcasePage.typeIn(containerCard, 'confirmbuttonlabel', 'ghi');
 
-        let dialogContainer = await AppPage.openDialog(containerCard);
+        let dialogContainer = await ShowcasePage.openDialog(containerCard);
 
         await expect(dialogContainer.element(by.tagName('h1')).getText()).toBe('abc');
         await expect(dialogContainer.element(by.tagName('p')).getText()).toBe('def');
@@ -31,9 +31,9 @@ describe('Confirm Dialog', () => {
         await expect(containerCard.element(by.css('.result')).getText()).toBe('Result: false');
 
         await containerCard.element(by.tagName('mat-checkbox')).click();
-        await AppPage.typeIn(containerCard, 'title', '');
+        await ShowcasePage.typeIn(containerCard, 'title', '');
 
-        dialogContainer = await AppPage.openDialog(containerCard);
+        dialogContainer = await ShowcasePage.openDialog(containerCard);
         await browser.wait(EC.presenceOf(dialogContainer));
 
         await expect(dialogContainer.all(by.tagName('button')).count()).toEqual(1);

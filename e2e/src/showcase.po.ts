@@ -1,7 +1,7 @@
 import {browser, by, element, ElementFinder, ExpectedConditions as EC} from 'protractor';
 import {protractor} from 'protractor/built/ptor';
 
-export class AppPage {
+export class ShowcasePage {
 
   static navigateTo(): Promise<void>  {
 
