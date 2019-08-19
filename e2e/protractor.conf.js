@@ -12,7 +12,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/', //with ng serve app run on port 4208, which is set up in angular.json. keep 4200 for use directly with protractor, like from IDE
+  baseUrl: 'http://localhost:4207/', //with ng serve app run on port 4208, which is set up in angular.json. keep 4200 for use directly with protractor, like from IDE
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
