@@ -2,26 +2,31 @@
 
 This is a library of recurrent components in Angular-Projects of the IQB. 
 
-## Development server
+## how to include
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+_upcoming_
 
-## Code scaffolding
+## show case app for development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This contains a showcase App for developers to try out each component and also for the automated tests. 
 
-## Build
+### installation and deployment
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+    git clone https://github.com/iqb-berlin/iqb-components.git
+    npm install
+    ng serve
+```
 
-## Running unit tests
+### Testing
 
-_Not implemented yet_
+````
+    ng test #unit tests with karma (_Not implemented yet_)
+    ng e2e  #e2e tests with protractor
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+````
 
-## Running end-to-end tests
+### default ports
 
-_Not implemented yet_
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* deployment: 4200
+* e2e-tests: 4208
