@@ -6,7 +6,7 @@
     "url": "https://github.com/iqb-berlin/iqb-components.git"
   },
   "files": ["src/app/components/**"],
-  "module": "src/app/components",
+  "module": "src/app/components/iqb-components.module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
