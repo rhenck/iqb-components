@@ -5,8 +5,17 @@
     "type": "git",
     "url": "https://github.com/iqb-berlin/iqb-components.git"
   },
-  "files": ["src/app/components/**"],
-  "module": "src/app/components/iqb-components.module",
+  "files": [
+    "src/app/components/**"
+  ],
+  "main": "src/app/components/iqb-components.module",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/app/components/iqb-components.module.ts"
+    },
+    "dest": "dist",
+    "whitelistedNonPeerDependencies": ["."]
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -39,9 +48,9 @@
     "@angular/cli": "~7.3.9",
     "@angular/compiler-cli": "~7.2.15",
     "@angular/language-service": "~7.2.15",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -50,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^5.5.0",
     "ngentest": "^0.4.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
