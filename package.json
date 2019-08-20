@@ -1,6 +1,12 @@
 {
   "name": "iqb-components",
   "version": "1.4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iqb-berlin/iqb-components.git"
+  },
+  "files": ["src/app/components/**"],
+  "main": "src/app/components/iqb-components.module.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
