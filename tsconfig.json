@@ -11,6 +11,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
+    "paths": {
+      "iqb-components": [
+        "src/components"
+      ]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],
