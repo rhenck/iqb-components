@@ -8,7 +8,7 @@ describe('Bytes Pipe', () => {
         page = new ShowcasePage();
     });
 
-    it('should calculate bytes successfully', async () => {
+    it('should calculate human readable bytes successfully', async () => {
 
         await ShowcasePage.navigateTo();
 
