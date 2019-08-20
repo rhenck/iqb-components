@@ -9,9 +9,8 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 export class ConfirmDialogComponent implements OnInit {
   public showcancel = true;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public confirmdata: ConfirmDialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public confirmdata: ConfirmDialogData) {}
 
-  }
 
   ngOnInit() {
     if ((typeof this.confirmdata.title === 'undefined') || (this.confirmdata.title.length === 0)) {

@@ -8,14 +8,17 @@ import {
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
-    MatChipsModule,
     MatDividerModule,
-    MatFormFieldModule, MatIconModule,
-    MatInputModule, MatSelectModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule
 } from '@angular/material';
 
-import {FormsModule} from '@angular/forms';
-import {FlexModule} from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+
+import { ConfirmDialogComponent, MessageDialogComponent } from './components';
 
 @NgModule({
     declarations: [
@@ -31,13 +34,20 @@ import {FlexModule} from '@angular/flex-layout';
         MatDividerModule,
         MatCheckboxModule,
         FormsModule,
-        FlexModule,
-        FlexModule,
-        MatChipsModule,
         MatSelectModule,
-        MatIconModule
+        MatIconModule,
+        MatDialogModule
     ],
     providers: [],
-    bootstrap: [Showcase]
+    bootstrap: [
+        Showcase
+    ],
+    entryComponents: [
+        ConfirmDialogComponent,
+        MessageDialogComponent
+    ],
+    exports: [
+        IqbComponentsModule
+    ]
 })
 export class AppModule { }
