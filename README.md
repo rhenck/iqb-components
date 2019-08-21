@@ -52,14 +52,17 @@ ng test
 * clone repository and install showcase up (see above)
 * place component under `src/app/components`
 * include component in module in `src/app/components/iqb-components.module.ts`
+* export component from barrel file: `src/app/components/public_api.ts` 
 * make a testing card in the showcase app for your component in `src/app/showcase.component.*`
 * write unit test in same folder like component. You can use ... to auto-generate a skeleton for the unit test
 * write a e2e-test for your component in e2e/src
 
 publish new version:
 
-* change version tag in `src/app/components/package.json`
-* `npm build:lib`
+* change version tag in `src/app/components/package.json` to new {version}
+* `npm run build:lib`
 * `npm login`
 * `npm publish dist`
-* `git`
+* `git tag {version}`
+* `git push`
+* `git push {version}`
