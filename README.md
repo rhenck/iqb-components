@@ -64,5 +64,5 @@ publish new version:
 * `npm login`
 * `npm publish dist`
 * `git tag {version}`
-* `git push`
-* `git push {version}`
+* `git push` # or pull request
+* `git push origin {version}`
