@@ -1,20 +1,9 @@
 {
-  "name": "iqb-components",
+  "name": "iqb-components-app",
   "version": "1.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/iqb-berlin/iqb-components.git"
-  },
-  "files": [
-    "src/app/components/**"
-  ],
-  "main": "src/app/components/iqb-components.module",
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/app/components/iqb-components.module.ts"
-    },
-    "dest": "dist",
-    "whitelistedNonPeerDependencies": ["."]
   },
   "scripts": {
     "ng": "ng",
@@ -22,9 +11,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:lib": "./node_modules/.bin/ng-packagr -p src/app/components/package.json"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~7.2.15",
     "@angular/cdk": "~7.3.7",

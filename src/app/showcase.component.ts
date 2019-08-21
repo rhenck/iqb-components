@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ConfirmDialogComponent, MessageDialogComponent } from './components';
+import { ConfirmDialogComponent } from './components/dialogs/confirm/confirm-dialog.component';
+import { MessageDialogComponent } from './components/dialogs/message/message-dialog.component';
 
 @Component({
   selector: 'app-root',

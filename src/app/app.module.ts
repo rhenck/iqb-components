@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { Showcase } from './showcase.component';
-import { IqbComponentsModule } from './components/iqb-components.module';
+import { IqbComponents } from './components/iqb-components.module';
 
 import {
     MatButtonModule,
@@ -18,15 +18,13 @@ import {
 
 import { FormsModule } from '@angular/forms';
 
-import { ConfirmDialogComponent, MessageDialogComponent } from './components';
-
 @NgModule({
     declarations: [
         Showcase
     ],
     imports: [
         BrowserModule,
-        IqbComponentsModule,
+        IqbComponents,
         MatCardModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -43,11 +41,9 @@ import { ConfirmDialogComponent, MessageDialogComponent } from './components';
         Showcase
     ],
     entryComponents: [
-        ConfirmDialogComponent,
-        MessageDialogComponent
     ],
     exports: [
-        IqbComponentsModule
+        IqbComponents
     ]
 })
 export class AppModule { }

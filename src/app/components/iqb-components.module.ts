@@ -29,4 +29,4 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BytesPipe
   ]
 })
-export class IqbComponentsModule { }
+export class IqbComponents { }
