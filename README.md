@@ -47,7 +47,9 @@ ng test
 * node v8
 * chrome (tests are set up for for testing with chrome but could be done with firefox as well)
 
-### How to include new component
+### How to include a new component
+
+#### new component check list
 
 * clone repository and install showcase up (see above)
 * place component under `src/app/components`
@@ -57,7 +59,7 @@ ng test
 * write unit test in same folder like component. You can use ... to auto-generate a skeleton for the unit test
 * write a e2e-test for your component in e2e/src
 
-publish new version:
+#### publish new version of components lib
 
 * change version tag in `src/app/components/package.json` to new {version}
 * `npm run build:lib`
