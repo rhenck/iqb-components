@@ -19,4 +19,5 @@ install:
 script:
   - google-chrome --version
   - npm run env
+  - ng serve
   - ng e2e
