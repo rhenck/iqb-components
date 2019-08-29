@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "10.16.3"
+
+sudo: true
+dist: bionic
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+install:
+  - npm install
+  - ./node_modules/.bin/webdriver-manager update --versions.chrome 76.0.3809.68
+
+script:
+  - google-chrome --version
+  - ng e2e
