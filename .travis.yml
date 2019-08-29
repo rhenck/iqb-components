@@ -15,9 +15,8 @@ addons:
 install:
   - npm install
   - ./node_modules/.bin/webdriver-manager update --versions.chrome 76.0.3809.68
+  - cp src/environments/environment.prod.ts src/environments/environment.ts
 
 script:
   - google-chrome --version
-  - npm run env
-  - ng serve
   - ng e2e
