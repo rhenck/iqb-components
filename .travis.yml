@@ -19,4 +19,4 @@ install:
 script:
   - google-chrome --version
   - ng e2e
-  - ng test
+  - ng test --watch=false --browsers=ChromeHeadless
