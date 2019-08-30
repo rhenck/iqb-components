@@ -15,7 +15,7 @@ addons:
 install:
   - npm install
   - cp src/environments/environment.prod.ts src/environments/environment.ts
-  - cp e2e/travis.protractor.conf.js e2e/protractor.js
+  - cp e2e/travis.protractor.conf.js e2e/protractor.conf.js
 
 script:
   - google-chrome --version
