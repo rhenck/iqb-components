@@ -28,14 +28,29 @@ ng serve
 
 #### Testing
 
-````
-#e2e tests with protractor
+##### E2E-Tests with Protractor
+```
 ng e2e
+```
 
-#unit tests with karma
-export CHROME_BIN=/bin/chromium #this is an example. you have to fill CHROME_BIN
+###### Troubleshooting
+* e2e test fails because version of chrome mismatches chrome driver version 
+```
+npx webdriver-manager clean
+npx webdriver-manager update --versions.chrome=`chromium --product-version` # replace "chrome" with "google-chrome" if you use that
+ng e2e --webdriver-update=false
+```
+
+##### Unit Tests with Karma
+```
 ng test  
-````
+```
+
+###### Troubleshooting
+* If no browser could be caught run
+```
+export CHROME_BIN=/bin/chromium #this is an example. you have to fill CHROME_BIN
+```
 
 #### Default Ports
 
@@ -63,6 +78,7 @@ ng test
 
 * change version tag in `src/app/components/package.json` to new {version}
 * `npm run build:lib`
+* `cp README.md dist/`
 * `npm login`
 * `npm publish dist`
 * `git tag {version}`
