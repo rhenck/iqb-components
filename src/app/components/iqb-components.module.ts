@@ -27,9 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   exports: [
     ConfirmDialogComponent,
     MessageDialogComponent,
-    BytesPipe,
-    ServerError,
-    ErrorHandler
+    BytesPipe
   ]
 })
 export class IqbComponents { }
+export { ServerError, ErrorHandler } from './iqb-components.classes'

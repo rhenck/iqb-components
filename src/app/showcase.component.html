@@ -103,17 +103,15 @@
       <p>Settings</p>
 
       <form>
-
         <mat-form-field>
           <label>
             <input matInput placeholder="Test Values" [(ngModel)]="pipeBytesValue" name="pipetestvalues">
           </label>
         </mat-form-field>
-
       </form>
 
       <div class="result">
-        Result:
+        Response:
         <ul><li *ngFor="let value of applyPipeBytes()">{{value | bytes}}</li></ul>
       </div>
 
@@ -121,6 +119,52 @@
 
   </mat-card>
 
+  <mat-card id="serverError">
+    <mat-card-title>ServerError/ErrorHandler</mat-card-title>
+    <mat-card-subtitle>A convenient way to catch http-Errors</mat-card-subtitle>
+
+    <mat-card-content>
+
+      <p>Settings</p>
+
+      <form>
+          <mat-form-field>
+            <label>
+              <input matInput placeholder="url" [(ngModel)]="httpErrorData.url" name="url">
+            </label>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+            <label>
+              <input matInput placeholder="parameterName" [(ngModel)]="httpErrorData.parameterName" name="pName">
+            </label>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+            <label>
+              <input matInput placeholder="parameterValue" [(ngModel)]="httpErrorData.parameterValue" name="pValue">
+            </label>
+          </mat-form-field>
+
+        </form>
+
+        <div class="result">
+          Response:
+          <ul>
+            <li>errorCode: {{httpResponse.errorCode}}</li>
+            <li>messageShort: {{httpResponse.messageShort}}</li>
+            <li>messageLong: {{httpResponse.messageLong}}</li>
+          </ul>
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="demoHttpError()">Execute</button>
+    </mat-card-actions>
+
+  </mat-card>
 </div>
 
 

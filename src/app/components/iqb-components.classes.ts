@@ -17,18 +17,19 @@ export class ErrorHandler {
 
     public static handle(errorObj: HttpErrorResponse): Observable<ServerError> {
 
-        let myreturn: ServerError = null;
+        let myReturn: ServerError;
+
         if (errorObj.error instanceof ErrorEvent) {
-            myreturn = new ServerError(500, 'Verbindungsproblem', errorObj.message);
+            myReturn = new ServerError(500, 'Verbindungsproblem', errorObj.message);
         } else {
-            myreturn = new ServerError(errorObj.status, 'Verbindungsproblem', errorObj.message);
+            myReturn = new ServerError(errorObj.status, 'Verbindungsproblem', errorObj.message);
             if (errorObj.status === 401) {
-                myreturn.labelNice = 'Zugriff verweigert - bitte (neu) anmelden!';
+                myReturn.labelNice = 'Zugriff verweigert - bitte (neu) anmelden!';
             } else if (errorObj.status === 503) {
-                myreturn.labelNice = 'Achtung: Server meldet Datenbankproblem.';
+                myReturn.labelNice = 'Achtung: Server meldet Datenbankproblem.';
             }
         }
 
-        return of(myreturn);
+        return of(myReturn);
     }
 }
