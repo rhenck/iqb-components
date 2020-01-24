@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './dialogs/confirm/confirm-dialog.component';
 import { MessageDialogComponent } from './dialogs/message/message-dialog.component';
 import { BytesPipe } from './pipes/bytes.pipe';
+import { ServerError, ErrorHandler } from './iqb-components.classes'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -30,3 +31,4 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ]
 })
 export class IqbComponents { }
+export { ServerError, ErrorHandler } from './iqb-components.classes'

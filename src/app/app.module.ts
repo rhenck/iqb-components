@@ -17,6 +17,8 @@ import {
 } from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
+import {ShowcaseService} from "./showcase.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -34,9 +36,12 @@ import { FormsModule } from '@angular/forms';
         FormsModule,
         MatSelectModule,
         MatIconModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientModule
     ],
-    providers: [],
+    providers: [
+        ShowcaseService,
+    ],
     bootstrap: [
         Showcase
     ],

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from './components/dialogs/confirm/confirm-dialog.component';
 import { MessageDialogComponent } from './components/dialogs/message/message-dialog.component';
+import {ShowcaseService} from './showcase.service';
+import {ServerError} from './components/iqb-components.classes';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,11 @@ import { MessageDialogComponent } from './components/dialogs/message/message-dia
 // tslint:disable-next-line:component-class-suffix
 export class Showcase {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+      public dialog: MatDialog,
+      private scs: ShowcaseService
+  ) {}
+
   title = 'iqb-components';
 
   confirmDialogData = {
@@ -33,6 +39,18 @@ export class Showcase {
   messageDialogResult: any;
 
   pipeBytesValue = '1, 100, 10000, 100000, 1000000, 10000000, 100000000, 10000000000000000';
+
+  httpErrorData = {
+    url: 'http://walhalla.et',
+    parameterName: 'Name',
+    parameterValue: 'Tarantino'
+  };
+
+  httpResponse = {
+    errorCode: 0,
+    messageShort: '-',
+    messageLong: '-'
+  };
 
   openConfirmDialog(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -64,7 +82,24 @@ export class Showcase {
     return this.pipeBytesValue
         .split(',')
         .map(item => parseInt(item, 10));
+  }
 
 
+  demoHttpError() {
+    this.scs.checkError(
+        this.httpErrorData.url,
+        this.httpErrorData.parameterName,
+        this.httpErrorData.parameterValue
+    ).subscribe(responseData => {
+      if (responseData instanceof ServerError) {
+        this.httpResponse.errorCode = (responseData as ServerError).code;
+        this.httpResponse.messageShort = (responseData as ServerError).labelNice;
+        this.httpResponse.messageLong = (responseData as ServerError).labelSystem;
+      } else {
+        this.httpResponse.errorCode = 0;
+        this.httpResponse.messageShort = 'valid serverresponse';
+        this.httpResponse.messageLong = (responseData as string);
+      }
+    });
   }
 }
