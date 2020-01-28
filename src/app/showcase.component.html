@@ -1,4 +1,4 @@
-<h1>IQB Components - Showcase</h1>
+<h1 class="mat-h1">IQB Components - Showcase</h1>
 
 <div>
 
@@ -162,6 +162,28 @@
 
     <mat-card-actions>
       <button mat-raised-button (click)="demoHttpError()">Execute</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+  <mat-card id="customText">
+    <mat-card-title>Custom Text</mat-card-title>
+    <mat-card-subtitle>Adapting text in applications during runtime</mat-card-subtitle>
+
+    <mat-card-content>
+
+      <div class="result">
+        <ul>
+          <li>Text 1: {{'ctv1 not piped'| customtext:'ctv1':cts.updateCount}}</li>
+          <li>Text 2: {{'ctv2 not piped'| customtext:'ctv2':cts.updateCount}}</li>
+          <li>Text 3: {{'ctv3 not piped'| customtext:'ctv3':cts.updateCount}}</li>
+          <li>Text 4: {{'ctv4 not piped'| customtext:'ctv4':cts.updateCount}}</li>
+        </ul>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="toggleCustomTexts()">Call CustomText-Pipe</button>
     </mat-card-actions>
 
   </mat-card>

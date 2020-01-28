@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { Showcase } from './showcase.component';
-import { IqbComponents } from './components/iqb-components.module';
+import {IqbComponentsModule} from './components/iqb-components.module';
 
 import {
     MatButtonModule,
@@ -26,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     imports: [
         BrowserModule,
-        IqbComponents,
+        IqbComponentsModule,
         MatCardModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -40,15 +40,10 @@ import { HttpClientModule } from '@angular/common/http';
         HttpClientModule
     ],
     providers: [
-        ShowcaseService,
+        ShowcaseService
     ],
     bootstrap: [
         Showcase
-    ],
-    entryComponents: [
-    ],
-    exports: [
-        IqbComponents
     ]
 })
 export class AppModule { }

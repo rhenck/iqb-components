@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ConfirmDialogComponent } from './components/dialogs/confirm/confirm-dialog.component';
-import { MessageDialogComponent } from './components/dialogs/message/message-dialog.component';
 import {ShowcaseService} from './showcase.service';
-import {ServerError} from './components/iqb-components.classes';
+import {
+  ConfirmDialogComponent,
+  CustomtextService,
+  MessageDialogComponent,
+  ServerError
+} from "./components/iqb-components.module";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +18,8 @@ export class Showcase {
 
   constructor(
       public dialog: MatDialog,
-      private scs: ShowcaseService
+      private scs: ShowcaseService,
+      private cts: CustomtextService
   ) {}
 
   title = 'iqb-components';
@@ -51,6 +55,20 @@ export class Showcase {
     messageShort: '-',
     messageLong: '-'
   };
+
+  customTextValues1 = {
+    'ctv1': 'ctv1: Sosososo',
+    'ctv2': 'ctv2: Düdüdüdü',
+    'ctv3': 'ctv3: yoyoyoyo'
+  };
+
+  customTextValues2 = {
+    'ctv1': 'ctv1: Jajajajaja',
+    'ctv2': 'ctv2: Füfüfüfüfüfüfü',
+    'ctv3': 'ctv3: herrjemieneh'
+  };
+
+  customTextToggle = true;
 
   openConfirmDialog(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -101,5 +119,14 @@ export class Showcase {
         this.httpResponse.messageLong = (responseData as string);
       }
     });
+  }
+
+  toggleCustomTexts() {
+    if (this.customTextToggle) {
+      this.cts.addCustomTexts(this.customTextValues1);
+    } else {
+      this.cts.addCustomTexts(this.customTextValues2);
+    }
+    this.customTextToggle = ! this.customTextToggle;
   }
 }
