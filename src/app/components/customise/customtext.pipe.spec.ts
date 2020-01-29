@@ -14,6 +14,6 @@ describe('CustomtextPipe', () => {
     expect(pipe.transform('any', 'ctv1')).toBe('Sosososo');
     expect(pipe.transform('any', 'ctv2')).toBe('Düdüdüdü');
     expect(pipe.transform('any', 'ctv3')).toBe('yoyoyoyo');
-    expect(pipe.transform('any', 'ctv4')).toBe('ctv4');
+    expect(pipe.transform('any', 'ctv4')).toBe('any');
   });
 });

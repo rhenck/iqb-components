@@ -16,9 +16,11 @@ import {
     MatDialogModule
 } from '@angular/material';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {ShowcaseService} from "./showcase.service";
 import { HttpClientModule } from '@angular/common/http';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -26,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         IqbComponentsModule,
         MatCardModule,
         MatButtonModule,
@@ -37,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
         MatSelectModule,
         MatIconModule,
         MatDialogModule,
-        HttpClientModule
+        HttpClientModule,
+        FlexLayoutModule
     ],
     providers: [
         ShowcaseService

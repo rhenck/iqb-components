@@ -16,11 +16,11 @@ export class CustomtextService {
     this.updateCount += 1
   }
 
-  getCustomText(key: string): string {
+  getCustomText(key: string, defaultReturn: string): string {
     if (this._customTexts.hasOwnProperty(key)) {
       return this._customTexts[key]
     } else {
-      return key
+      return defaultReturn
     }
   }
 
