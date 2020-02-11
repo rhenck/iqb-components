@@ -7,6 +7,7 @@ import { BytesPipe } from './pipes/bytes.pipe';
 import { CustomtextPipe } from './customise/customtext.pipe';
 import {CustomtextService} from "./customise/customtext.service";
 import {ErrorHandler, ServerError} from "./iqb-components.classes";
+import {CustomTextData, CustomTextDefs} from "./customise/customtext.interfaces";
 
 @NgModule({
   imports: [
@@ -37,4 +38,4 @@ import {ErrorHandler, ServerError} from "./iqb-components.classes";
 })
 export class IqbComponentsModule { }
 export {ConfirmDialogComponent, MessageDialogComponent, ServerError, ErrorHandler,
-  BytesPipe, CustomtextPipe, CustomtextService}
+  CustomTextData, CustomTextDefs, BytesPipe, CustomtextPipe, CustomtextService}

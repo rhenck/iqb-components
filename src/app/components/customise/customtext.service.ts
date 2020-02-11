@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {CustomTextDefs} from "./customtext.interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +11,26 @@ export class CustomtextService {
   constructor() { }
 
   addCustomTexts(newTexts: {[key: string]: string}) {
-    for (let key in newTexts) {
+    for (const key in newTexts) {
       this._customTexts[key] = newTexts[key];
     }
     this.updateCount += 1
   }
 
-  getCustomText(key: string, defaultReturn: string): string {
+  addCustomTextsFromDefs(newTexts: CustomTextDefs) {
+    for (const key in Object.keys(newTexts)) {
+      this._customTexts[key] = newTexts[key].defaultvalue;
+    }
+    this.updateCount += 1
+  }
+
+  getCustomText(key: string, defaultReturn = ''): string {
     if (this._customTexts.hasOwnProperty(key)) {
       return this._customTexts[key]
-    } else {
+    } else if (defaultReturn) {
       return defaultReturn
+    } else {
+      return key
     }
   }
 
