@@ -24,7 +24,7 @@ export class CustomtextService {
     this.updateCount += 1
   }
 
-  getCustomText(key: string, defaultReturn = ''): string {
+  getCustomText(key: string, defaultReturn: string = ''): string {
     if (this._customTexts.hasOwnProperty(key)) {
       return this._customTexts[key]
     } else if (defaultReturn) {
@@ -33,5 +33,4 @@ export class CustomtextService {
       return key
     }
   }
-
-  }
+}
