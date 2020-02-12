@@ -21,10 +21,14 @@ import {ShowcaseService} from "./showcase.service";
 import { HttpClientModule } from '@angular/common/http';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ShowcaseRoutingModule} from "./showcase-routing.module";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {AppComponent} from "./app.component";
 
 @NgModule({
     declarations: [
-        Showcase
+        Showcase,
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -41,13 +45,18 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         MatIconModule,
         MatDialogModule,
         HttpClientModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        ShowcaseRoutingModule
     ],
     providers: [
-        ShowcaseService
+        ShowcaseService,
+        {
+            provide: LocationStrategy,
+            useClass: HashLocationStrategy
+        }
     ],
     bootstrap: [
-        Showcase
+        AppComponent
     ]
 })
 export class AppModule { }

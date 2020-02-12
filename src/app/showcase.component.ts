@@ -9,7 +9,6 @@ import {
 } from "./components/iqb-components.module";
 
 @Component({
-  selector: 'app-root',
   templateUrl: './showcase.component.html',
   styleUrls: ['./showcase.component.scss']
 })
