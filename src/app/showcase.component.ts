@@ -55,19 +55,11 @@ export class Showcase {
     messageLong: '-'
   };
 
-  customTextValues1 = {
-    'ctv1': 'ctv1: Sosososo',
-    'ctv2': 'ctv2: Düdüdüdü',
-    'ctv3': 'ctv3: yoyoyoyo'
+  customTextValues = {
+    ctv1: '',
+    ctv2: '',
+    ctv3: ''
   };
-
-  customTextValues2 = {
-    'ctv1': 'ctv1: Jajajajaja',
-    'ctv2': 'ctv2: Füfüfüfüfüfüfü',
-    'ctv3': 'ctv3: herrjemieneh'
-  };
-
-  customTextToggle = true;
 
   openConfirmDialog(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -120,12 +112,11 @@ export class Showcase {
     });
   }
 
-  toggleCustomTexts() {
-    if (this.customTextToggle) {
-      this.cts.addCustomTexts(this.customTextValues1);
-    } else {
-      this.cts.addCustomTexts(this.customTextValues2);
-    }
-    this.customTextToggle = ! this.customTextToggle;
+  applyCustomTexts() {
+    let myCustomTexts: {[key: string]: string} = {};
+    myCustomTexts['ctv1'] = this.customTextValues.ctv1;
+    myCustomTexts['ctv2'] = this.customTextValues.ctv2;
+    myCustomTexts['ctv3'] = this.customTextValues.ctv3;
+    this.cts.addCustomTexts(myCustomTexts);
   }
 }

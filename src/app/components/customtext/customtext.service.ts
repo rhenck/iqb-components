@@ -25,7 +25,7 @@ export class CustomtextService {
   }
 
   getCustomText(key: string, defaultReturn: string = ''): string {
-    if (this._customTexts.hasOwnProperty(key)) {
+    if (this._customTexts[key]) {
       return this._customTexts[key]
     } else if (defaultReturn) {
       return defaultReturn
