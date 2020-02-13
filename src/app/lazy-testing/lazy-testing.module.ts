@@ -15,11 +15,13 @@ import {
   MatDialogModule} from "@angular/material";
 import {FormsModule} from "@angular/forms";
 import {IqbComponentsModule} from "../components/iqb-components.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
   declarations: [LazyComponent],
   imports: [
+    FlexLayoutModule,
     CommonModule,
     MatCardModule,
     MatCheckboxModule,
