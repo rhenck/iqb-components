@@ -20,8 +20,9 @@ import {MatInputModule} from "@angular/material/input";
     LazyTestingRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    IqbComponentsModule,
+    IqbComponentsModule.forChild(),
     FormsModule
   ]
 })
 export class LazyTestingModule { }
+

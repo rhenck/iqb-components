@@ -187,39 +187,23 @@
           </label>
         </mat-form-field>
         <br>
-
-        <mat-form-field>
-          <label>
-            <input matInput placeholder="Text 3" [(ngModel)]="customTextValues.ctv3" name="ctv3">
-          </label>
-        </mat-form-field>
-
       </form>
 
       <div class="result">
         Piped via CustomText:
         <ul>
-          <li>Text 1: {{'Text 1 default'| customtext:'ctv1':cts.updateCount}}</li>
-          <li>Text 2: {{'Text 2 default'| customtext:'ctv2':cts.updateCount}}</li>
-          <li>Text 3: {{'Text 3 default'| customtext:'ctv3':cts.updateCount}}</li>
-          <li>Text 4 (not given in app): {{'Text 4 default'| customtext:'ctv4':cts.updateCount}}</li>
+          <li>Text 1 (from root component): {{'Text 1 default'| customtext:'ctv1':cts.updateCount}}</li>
+          <li>Text 2 (from root component): {{'Text 2 default'| customtext:'ctv2':cts.updateCount}}</li>
+          <li>Text 3 (from lazy component): {{'Text 3 default'| customtext:'ctv3':cts.updateCount}}</li>
+          <li>Text 4 (from lazy component): {{'Text 4 default'| customtext:'ctv4':cts.updateCount}}</li>
         </ul>
       </div>
     </mat-card-content>
 
     <mat-card-actions>
       <button mat-raised-button (click)="applyCustomTexts()">Apply settings</button>
+      <button mat-raised-button (click)="goToLazy()">Go to lazy loaded module</button>
     </mat-card-actions>
 
   </mat-card>
-
-  <mat-card id="gotoLazy">
-    <mat-card-content>
-      <a [routerLink]="['lazy']">Gehe zu Custom Text im separaten Modul</a>
-    </mat-card-content>
-  </mat-card>
 </div>
-
-
-
-

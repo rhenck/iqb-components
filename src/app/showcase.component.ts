@@ -7,6 +7,7 @@ import {
   MessageDialogComponent,
   ServerError
 } from "./components/iqb-components.module";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './showcase.component.html',
@@ -18,6 +19,7 @@ export class Showcase {
   constructor(
       public dialog: MatDialog,
       private scs: ShowcaseService,
+      private router: Router,
       private cts: CustomtextService
   ) {}
 
@@ -58,7 +60,6 @@ export class Showcase {
   customTextValues = {
     ctv1: '',
     ctv2: '',
-    ctv3: ''
   };
 
   openConfirmDialog(): void {
@@ -116,7 +117,9 @@ export class Showcase {
     let myCustomTexts: {[key: string]: string} = {};
     myCustomTexts['ctv1'] = this.customTextValues.ctv1;
     myCustomTexts['ctv2'] = this.customTextValues.ctv2;
-    myCustomTexts['ctv3'] = this.customTextValues.ctv3;
     this.cts.addCustomTexts(myCustomTexts);
+  }
+  goToLazy() {
+    this.router.navigateByUrl('/lazy');
   }
 }

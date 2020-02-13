@@ -8,9 +8,67 @@ This is a library of recurrent components in Angular-Projects of the IQB.
 
 ## How to use
 
+### Install
 ```
 npm install iqb-components
 ```
+### Components
+This library is developed and maintained with a show case application. Every component is used, 
+so in order to get an idea of what these components are for and how they are to be used, have a 
+look at the source code!
+
+####Custom Text
+This service enables the replacement of text in components and dialog boxes etc. during runtime. 
+Typical use cases are the naming of the application, the wording of login prompts or any salutation.
+
+After filling up the dictionary via function `addCustomTexts(newTexts: {[key: string]: string})`, there are two ways to use the service:
+* function to get the text `getCustomText(key, defaultvalue)`
+* pipe to be used in templates like
+ `<li>Text 1: {{'Text 1 default'| customtext:'ctv1':cts.updateCount}}</li>` 
+
+If you like to use this service in the application and in **lazy loaded modules**, a special way to 
+declare this module is needed (otherwise, the service will not be singleton):
+* In the application module import `IqbComponentsModule.forRoot()`
+* In the sub (lazy loaded) module import `IqbComponentsModule.forChild()`
+
+#### Bytes pipe
+This is a simple way to present a number of bytes nicely. 
+Use in templates `{{value | bytes}}`, you'll get (as examples):
+* for value 1536 > '1.5 KB'
+* for value 11000000000000 > '10.0 TB'
+
+#### Dialogs
+These dialogs provide typical modal boxes to be presented to the user. They are angular material based
+so take care to import the modules `MatDialogModule, MatIconModule, MatButtonModule` in your application.
+Otherwise for example the positioning on page will fail. Please have a look at the parameters to
+understand these components:
+
+#####ConfirmDialogComponent
+```
+export interface ConfirmDialogData {
+  title: string;
+  content: string;
+  confirmbuttonlabel: string;
+  showcancel: boolean;
+}
+```
+#####MessageDialogComponent
+```
+export enum MessageType {
+  error,
+  warning,
+  info
+}
+
+export interface MessageDialogData {
+  type: MessageType;
+  title: string;
+  content: string;
+  closebuttonlabel: string;
+}
+```
+
+
 
 ## for developers
 

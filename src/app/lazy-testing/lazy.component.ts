@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {CustomtextService} from "../components/customtext/customtext.service";
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './lazy.component.html',
@@ -8,20 +9,23 @@ import {CustomtextService} from "../components/customtext/customtext.service";
 export class LazyComponent {
 
   customTextValues = {
-    ctv4: '',
-    ctv5: '',
-    ctv6: ''
+    ctv3: '',
+    ctv4: ''
   };
 
   constructor(
+      private router: Router,
       private cts: CustomtextService
   ) { }
 
   applyCustomTexts() {
     let myCustomTexts: {[key: string]: string} = {};
+    myCustomTexts['ctv3'] = this.customTextValues.ctv3;
     myCustomTexts['ctv4'] = this.customTextValues.ctv4;
-    myCustomTexts['ctv5'] = this.customTextValues.ctv5;
-    myCustomTexts['ctv6'] = this.customTextValues.ctv6;
     this.cts.addCustomTexts(myCustomTexts);
+  }
+
+  goBack() {
+    this.router.navigateByUrl('/');
   }
 }
