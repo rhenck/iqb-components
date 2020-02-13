@@ -4,10 +4,15 @@ import { CommonModule } from '@angular/common';
 import { LazyTestingRoutingModule } from './lazy-testing-routing.module';
 import { LazyComponent } from './lazy.component';
 import {
-  MatCardModule,
   MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
   MatInputModule,
-  MatFormFieldModule} from "@angular/material";
+  MatSelectModule,
+  MatDialogModule} from "@angular/material";
 import {FormsModule} from "@angular/forms";
 import {IqbComponentsModule} from "../components/iqb-components.module";
 
@@ -17,9 +22,14 @@ import {IqbComponentsModule} from "../components/iqb-components.module";
   imports: [
     CommonModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatIconModule,
     MatButtonModule,
+    MatSelectModule,
     LazyTestingRoutingModule,
     MatFormFieldModule,
+    MatDialogModule,
     MatInputModule,
     IqbComponentsModule.forChild(),
     FormsModule
