@@ -17,7 +17,7 @@ This library is developed and maintained with a show case application. Every com
 so in order to get an idea of what these components are for and how they are to be used, have a 
 look at the source code!
 
-####Custom Text
+#### Custom Text
 This service enables the replacement of text in components and dialog boxes etc. during runtime. 
 Typical use cases are the naming of the application, the wording of login prompts or any salutation.
 
@@ -43,7 +43,7 @@ so take care to import the modules `MatDialogModule, MatIconModule, MatButtonMod
 Otherwise for example the positioning on page will fail. Please have a look at the parameters to
 understand these components:
 
-#####ConfirmDialogComponent
+##### ConfirmDialogComponent
 ```
 export interface ConfirmDialogData {
   title: string;
@@ -52,7 +52,7 @@ export interface ConfirmDialogData {
   showcancel: boolean;
 }
 ```
-#####MessageDialogComponent
+##### MessageDialogComponent
 ```
 export enum MessageType {
   error,
