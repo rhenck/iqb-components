@@ -1,6 +1,5 @@
 import {Injectable, Optional} from '@angular/core';
 import {CustomTextDefs} from "./customtext.interfaces";
-import {IqbComponentsConfig} from "../iqb-components.classes";
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +7,8 @@ import {IqbComponentsConfig} from "../iqb-components.classes";
 export class CustomtextService {
   public updateCount = 0;
   private _customTexts: {[key: string]: string} = {};
-  private myConfig: IqbComponentsConfig;
 
-  constructor(config: IqbComponentsConfig) {
-    this.myConfig = config;
-  }
+  constructor() { }
 
   addCustomTexts(newTexts: {[key: string]: string}) {
     for (const key in newTexts) {
