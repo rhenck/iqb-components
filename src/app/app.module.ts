@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ShowcaseRoutingModule} from "./showcase-routing.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {AppComponent} from "./app.component";
+import {LazyTestingModule} from "./lazy-testing/lazy-testing.module";
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import {AppComponent} from "./app.component";
         MatDialogModule,
         HttpClientModule,
         FlexLayoutModule,
-        ShowcaseRoutingModule
+        ShowcaseRoutingModule,
+        LazyTestingModule
     ],
     providers: [
         ShowcaseService,
