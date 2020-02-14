@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { LazyTestingRoutingModule } from './lazy-testing-routing.module';
 import { LazyComponent } from './lazy.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 import {
   MatButtonModule,
   MatCardModule,
@@ -15,7 +16,6 @@ import {
   MatDialogModule} from "@angular/material";
 import {FormsModule} from "@angular/forms";
 import {IqbComponentsModule} from "../components/iqb-components.module";
-import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
