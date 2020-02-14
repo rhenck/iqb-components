@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import {FormsModule} from "@angular/forms";
 
 import { LazyTestingRoutingModule } from './lazy-testing-routing.module';
 import { LazyComponent } from './lazy.component';
@@ -14,16 +15,16 @@ import {
   MatInputModule,
   MatSelectModule,
   MatDialogModule} from "@angular/material";
-import {FormsModule} from "@angular/forms";
 import {IqbComponentsModule} from "../components/iqb-components.module";
 
 
 @NgModule({
   declarations: [LazyComponent],
   imports: [
-    FlexLayoutModule,
     CommonModule,
+    FormsModule,
     MatCardModule,
+    FlexLayoutModule,
     MatCheckboxModule,
     MatDividerModule,
     MatIconModule,
@@ -33,8 +34,7 @@ import {IqbComponentsModule} from "../components/iqb-components.module";
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    IqbComponentsModule.forChild(),
-    FormsModule
+    IqbComponentsModule.forChild()
   ]
 })
 export class LazyTestingModule { }
