@@ -3,39 +3,37 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 
 import { LazyTestingRoutingModule } from './lazy-testing-routing.module';
-import { LazyComponent } from './lazy.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule,
-  MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
-  MatSelectModule,
-  MatDialogModule} from "@angular/material";
+  MatInputModule} from "@angular/material";
 import {IqbComponentsModule} from "../components/iqb-components.module";
+import { LazyComponent } from './lazy.component';
 
 
 @NgModule({
-  declarations: [LazyComponent],
   imports: [
     CommonModule,
     FormsModule,
     MatCardModule,
     FlexLayoutModule,
-    MatCheckboxModule,
-    MatDividerModule,
     MatIconModule,
     MatButtonModule,
-    MatSelectModule,
     LazyTestingRoutingModule,
     MatFormFieldModule,
-    MatDialogModule,
     MatInputModule,
     IqbComponentsModule.forChild()
+  ],
+  declarations: [
+      LazyComponent
+  ],
+  exports: [
+      LazyComponent
   ]
+
 })
 export class LazyTestingModule { }
 

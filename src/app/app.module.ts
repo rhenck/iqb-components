@@ -24,13 +24,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ShowcaseRoutingModule} from "./showcase-routing.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {AppComponent} from "./app.component";
-import {LazyComponent} from "./lazy-testing/lazy.component";
 
 @NgModule({
     declarations: [
         Showcase,
-        AppComponent,
-        LazyComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
