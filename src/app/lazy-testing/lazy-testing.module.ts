@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { LazyTestingRoutingModule } from './lazy-testing-routing.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatButtonModule,
   MatCardModule,
@@ -25,7 +25,7 @@ import { LazyComponent } from './lazy.component';
     LazyTestingRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    IqbComponentsModule.forChild()
+    IqbComponentsModule.forChild(),
   ],
   declarations: [
       LazyComponent
