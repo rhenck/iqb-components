@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { Showcase } from './showcase.component';
-import { IqbComponents } from './components/iqb-components.module';
+import { IqbComponentsModule } from './components/iqb-components.module';
+import { LazyTestingModule } from './lazy-testing/lazy-testing.module';
 
 import {
     MatButtonModule,
@@ -17,16 +18,23 @@ import {
 } from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
-import {ShowcaseService} from "./showcase.service";
+import { ShowcaseService } from './showcase.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowcaseRoutingModule } from './showcase-routing.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [
-        Showcase
+        Showcase,
+        AppComponent
     ],
     imports: [
         BrowserModule,
-        IqbComponents,
+        BrowserAnimationsModule,
+        IqbComponentsModule.forRoot(),
         MatCardModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -37,18 +45,20 @@ import { HttpClientModule } from '@angular/common/http';
         MatSelectModule,
         MatIconModule,
         MatDialogModule,
-        HttpClientModule
+        HttpClientModule,
+        FlexLayoutModule,
+        ShowcaseRoutingModule,
+        LazyTestingModule
     ],
     providers: [
         ShowcaseService,
+        {
+            provide: LocationStrategy,
+            useClass: HashLocationStrategy
+        }
     ],
     bootstrap: [
-        Showcase
-    ],
-    entryComponents: [
-    ],
-    exports: [
-        IqbComponents
+        AppComponent
     ]
 })
 export class AppModule { }

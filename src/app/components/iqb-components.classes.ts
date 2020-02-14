@@ -13,6 +13,11 @@ export class ServerError {
     }
 }
 
+export class IqbComponentsConfig {
+    public id: string;
+    public name: string;
+}
+
 export class ErrorHandler {
 
     public static handle(errorObj: HttpErrorResponse): Observable<ServerError> {

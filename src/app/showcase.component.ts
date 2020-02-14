@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ConfirmDialogComponent } from './components/dialogs/confirm/confirm-dialog.component';
-import { MessageDialogComponent } from './components/dialogs/message/message-dialog.component';
 import {ShowcaseService} from './showcase.service';
-import {ServerError} from './components/iqb-components.classes';
+import {
+  ConfirmDialogComponent,
+  CustomtextService,
+  MessageDialogComponent,
+  ServerError
+} from './components/iqb-components.module';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-root',
   templateUrl: './showcase.component.html',
   styleUrls: ['./showcase.component.scss']
 })
@@ -15,7 +18,9 @@ export class Showcase {
 
   constructor(
       public dialog: MatDialog,
-      private scs: ShowcaseService
+      private scs: ShowcaseService,
+      private router: Router,
+      public cts: CustomtextService
   ) {}
 
   title = 'iqb-components';
@@ -50,6 +55,11 @@ export class Showcase {
     errorCode: 0,
     messageShort: '-',
     messageLong: '-'
+  };
+
+  customTextValues = {
+    ctv1: '',
+    ctv2: '',
   };
 
   openConfirmDialog(): void {
@@ -101,5 +111,15 @@ export class Showcase {
         this.httpResponse.messageLong = (responseData as string);
       }
     });
+  }
+
+  applyCustomTexts() {
+    const myCustomTexts: {[key: string]: string} = {};
+    myCustomTexts.ctv1 = this.customTextValues.ctv1;
+    myCustomTexts.ctv2 = this.customTextValues.ctv2;
+    this.cts.addCustomTexts(myCustomTexts);
+  }
+  goToLazy() {
+    this.router.navigateByUrl('/lazy');
   }
 }
