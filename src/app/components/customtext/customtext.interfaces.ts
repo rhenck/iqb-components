@@ -3,4 +3,4 @@ export interface CustomTextData {
     description: string;
 }
 
-export interface  CustomTextDefs {[key: string]: CustomTextData}
+export interface  CustomTextDefs {[key: string]: CustomTextData; }
