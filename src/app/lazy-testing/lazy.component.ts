@@ -15,7 +15,7 @@ export class LazyComponent {
 
   constructor(
       private router: Router,
-      private cts: CustomtextService
+      public cts: CustomtextService
   ) { }
 
   applyCustomTexts() {

@@ -20,7 +20,7 @@ export class Showcase {
       public dialog: MatDialog,
       private scs: ShowcaseService,
       private router: Router,
-      private cts: CustomtextService
+      public cts: CustomtextService
   ) {}
 
   title = 'iqb-components';
