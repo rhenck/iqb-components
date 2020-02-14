@@ -6,8 +6,8 @@ import {
   CustomtextService,
   MessageDialogComponent,
   ServerError
-} from "./components/iqb-components.module";
-import {Router} from "@angular/router";
+} from './components/iqb-components.module';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: './showcase.component.html',
@@ -114,9 +114,9 @@ export class Showcase {
   }
 
   applyCustomTexts() {
-    let myCustomTexts: {[key: string]: string} = {};
-    myCustomTexts['ctv1'] = this.customTextValues.ctv1;
-    myCustomTexts['ctv2'] = this.customTextValues.ctv2;
+    const myCustomTexts: {[key: string]: string} = {};
+    myCustomTexts.ctv1 = this.customTextValues.ctv1;
+    myCustomTexts.ctv2 = this.customTextValues.ctv2;
     this.cts.addCustomTexts(myCustomTexts);
   }
   goToLazy() {
