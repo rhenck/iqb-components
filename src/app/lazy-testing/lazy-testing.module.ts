@@ -4,14 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { LazyTestingRoutingModule } from './lazy-testing-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule} from '@angular/material';
 import { IqbComponentsModule } from '../components/iqb-components.module';
 import { LazyComponent } from './lazy.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({

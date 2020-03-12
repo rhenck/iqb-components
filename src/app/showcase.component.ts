@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import {ShowcaseService} from './showcase.service';
 import {
   ConfirmDialogComponent,
@@ -8,6 +7,7 @@ import {
   ServerError
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   templateUrl: './showcase.component.html',
