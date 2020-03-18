@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
-import { MAT_DIALOG_DATA, MatDialogClose, MatDialog } from '@angular/material';
+import {MatDialogClose, MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 
 describe('ConfirmDialogComponent', () => {
   let fixture;

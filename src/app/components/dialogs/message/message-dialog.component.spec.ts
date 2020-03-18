@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { MessageDialogComponent } from './message-dialog.component';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 describe('MessageDialogComponent', () => {
   let fixture;
