@@ -1,5 +1,5 @@
 [![npm](https://img.shields.io/npm/v/iqb-components.svg?style=flat-square)](https://www.npmjs.com/package/iqb-components)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Travis (.com)](https://img.shields.io/travis/com/iqb-berlin/iqb-components?style=flat-square)](https://travis-ci.com/iqb-berlin/iqb-components)
 
 # IqbComponents
@@ -134,7 +134,7 @@ export CHROME_BIN=/bin/chromium #this is an example. you have to fill CHROME_BIN
 
 #### publish new version of components lib
 
-* change version tag in `src/app/components/package.json` to new {version}
+* change version tag both in `src/app/components/package.json` and `package.json` to new {version}
 * `npm run build:lib`
 * `cp README.md dist/`
 * `npm login`
