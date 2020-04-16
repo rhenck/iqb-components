@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Fehler melden</h1>
+<mat-dialog-content>
+  <p>Es tut uns leid! Leider ist hier eine Fehler passiert. Helfen Sie uns ihn in zukunft zu vermeiden
+    und Melden Sie ihn.</p>
+  <form>
+    <mat-form-field>
+      <label>
+        <textarea matInput placeholder="Kommentar" [(ngModel)]="errorData.comment" name="comment"></textarea>
+      </label>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Ihr Name" [(ngModel)]="errorData.reporterName" name="reporterName">
+      </label>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Ihre Email" [(ngModel)]="errorData.reporterEmail" name="reporter">
+      </label>
+    </mat-form-field>
+    <br>
+  </form>
+  <p>
+    <label>Interne Fehlerinformationen</label><br>
+    <code>
+      {{errorData.internalText}}
+    </code>
+  </p>
+  <p>
+    <label>Interne Fehlerkennung</label><br>
+    <code>
+      {{errorData.errorIdentifier}}
+    </code>
+  </p>
+  <p>
+    <label>Produkt / Version</label><br>
+    <code>
+      {{errorData.product}} / {{errorData.version}}
+    </code>
+  </p>
+  <p>
+    <label>Repository</label><br>
+    <code>
+      {{errorData.repository}}
+    </code>
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button>Melden</button>
+  <button mat-raised-button mat-dialog-close>Abbrechen</button>
+</mat-dialog-actions>

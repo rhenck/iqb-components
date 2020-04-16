@@ -4,7 +4,9 @@ import {
   ConfirmDialogComponent,
   CustomtextService,
   MessageDialogComponent,
-  ServerError
+  ServerError,
+  ReportErrorDialogComponent,
+  ReportableErrorData
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
@@ -43,6 +45,16 @@ export class Showcase {
 
   messageDialogResult: any;
 
+  reportErrorDialogData: ReportableErrorData = {
+    errorIdentifier: '#1337',
+    reporterName: 'paf@iqb.de',
+    internalText: 'error in line 135',
+    repository: "xxx"
+  }
+
+  reportErrorDialogResult: any;
+
+
   pipeBytesValue = '1, 100, 10000, 100000, 1000000, 10000000, 100000000, 10000000000000000';
 
   httpErrorData = {
@@ -63,6 +75,7 @@ export class Showcase {
   };
 
   openConfirmDialog(): void {
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: 'auto',
       data: Object.assign({}, this.confirmDialogData)
@@ -75,7 +88,7 @@ export class Showcase {
   }
 
   openMessageDialog(): void {
-    console.log(this.messageDialogData);
+
     const dialogRef = this.dialog.open(MessageDialogComponent, {
       width: 'auto',
       data: Object.assign({}, this.messageDialogData),
@@ -88,7 +101,22 @@ export class Showcase {
   }
 
 
+  openErrorReportDialog(): void {
+
+    const dialogRef = this.dialog.open(ReportErrorDialogComponent, {
+      width: 'auto',
+      data: Object.assign({}, this.reportErrorDialogData),
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed with:', result);
+      this.reportErrorDialogResult = result;
+    });
+  }
+
+
   applyPipeBytes() {
+
     return this.pipeBytesValue
         .split(',')
         .map(item => parseInt(item, 10));

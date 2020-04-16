@@ -94,6 +94,51 @@
 
   </mat-card>
 
+  <mat-card id="reportErrorDialog">
+    <mat-card-title>tc-report-error-dialog</mat-card-title>
+    <mat-card-subtitle>A dialogue to report an error to GitHub</mat-card-subtitle>
+
+    <mat-card-content>
+
+      <p>Settings</p>
+
+      <form>
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="title" [(ngModel)]="reportErrorDialogData.internalText" name="internalText">
+          </label>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="content" [(ngModel)]="reportErrorDialogData.errorIdentifier" name="errorIdentifier">
+          </label>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="name" [(ngModel)]="reportErrorDialogData.reporterName" name="reporterName">
+          </label>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="email" [(ngModel)]="reportErrorDialogData.reporterEmail" name="reporterEmail">
+          </label>
+        </mat-form-field>
+        <br>
+      </form>
+
+      <div class="result">Result: {{reportErrorDialogResult}}</div>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="openErrorReportDialog()">Open Dialogue</button>
+    </mat-card-actions>
+
+  </mat-card>
+
   <mat-card id="bytesPipe">
     <mat-card-title>BytesPipe</mat-card-title>
     <mat-card-subtitle>A pipe for human readable file sizes</mat-card-subtitle>
