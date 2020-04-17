@@ -9,14 +9,27 @@ import { GitHubService } from './github.service';
 })
 export class BugReportDialogComponent implements OnInit {
 
+  private bugReport: BugReport;
+
   constructor(
     @Inject('APP_NAME') appName: string,
     @Inject('APP_VERSION') appVersion: string,
     @Inject('APP_REPOSITORY') appRepository: string,
-    @Inject(MAT_DIALOG_DATA) private bugReport: BugReport,
+    @Inject(MAT_DIALOG_DATA) bug: Error,
     private gitHubService: GitHubService,
     private dialogRef: MatDialogRef<BugReportDialogComponent>
   ) {
+
+    if (bug instanceof Error) {
+
+      this.bugReport = { // stand: titel einführen
+        internalText: bug.message + `\n\n` + bug.stack.toString()
+      }
+
+    } else {
+
+      this.bugReport = bug;
+    }
 
     this.bugReport.product = this.bugReport.product ?? appName;
     this.bugReport.version = this.bugReport.version ?? appVersion;
@@ -26,6 +39,7 @@ export class BugReportDialogComponent implements OnInit {
 
     this.bugReport.comment = this.bugReport.comment ??
         "## Was haben Sie gemacht\n## Was sollte passieren?\n## Was ist stattdessen passiert?";
+
   }
 
   ngOnInit() {

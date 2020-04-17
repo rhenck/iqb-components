@@ -103,14 +103,38 @@ export class Showcase {
 
   openBugReportDialog(): void {
 
-    const dialogRef = this.dialog.open(BugReportDialogComponent, {
-      data: Object.assign({}, this.reportErrorDialogData),
-    });
+      const dialogRef = this.dialog.open(BugReportDialogComponent, {
+        data: this.reportErrorDialogData,
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed with:', result);
-      this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed with:', result);
+        this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
+      });
+
+
+  }
+
+
+  openBugReportDialogJsError(): void {
+
+    try {
+
+      // noinspection ExceptionCaughtLocallyJS
+      throw new Error("intentionally thrown error");
+
+    } catch (error) {
+
+      const dialogRef = this.dialog.open(BugReportDialogComponent, {
+        data: error,
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed with:', result);
+        this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
+      });
+    }
+
   }
 
 
