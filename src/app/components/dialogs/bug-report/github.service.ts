@@ -19,7 +19,7 @@ export class GitHubService {
     //https://github.com/paflov/demo
     publishIssue(gitHubRepository: GitHubRepository, gitHubIssue: GitHubIssue): Observable<string|null> {
 
-        const url = `https://api.github.com/repos/${gitHubRepository.owner}d/${gitHubRepository.name}/issues`;
+        const url = `https://api.github.com/repos/${gitHubRepository.owner}/${gitHubRepository.name}/issues`;
         const headers = new HttpHeaders({Authorization: 'Basic ' + btoa('paflov' + ':' + this.token4)});
 
         return this.http.post(url, gitHubIssue, {headers})
