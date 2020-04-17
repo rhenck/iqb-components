@@ -104,13 +104,12 @@ export class Showcase {
   openBugReportDialog(): void {
 
     const dialogRef = this.dialog.open(BugReportDialogComponent, {
-      width: '70%',
       data: Object.assign({}, this.reportErrorDialogData),
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed with:', result);
-      this.reportErrorDialogResult = result;
+      this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
     });
   }
 
