@@ -5,7 +5,7 @@ import {
   CustomtextService,
   MessageDialogComponent,
   ServerError,
-  BugReportComponent,
+  BugReportDialogComponent,
   BugReport
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
@@ -103,8 +103,8 @@ export class Showcase {
 
   openBugReportDialog(): void {
 
-    const dialogRef = this.dialog.open(BugReportComponent, {
-      width: 'auto',
+    const dialogRef = this.dialog.open(BugReportDialogComponent, {
+      width: '70%',
       data: Object.assign({}, this.reportErrorDialogData),
     });
 

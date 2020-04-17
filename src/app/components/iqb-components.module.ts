@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './dialogs/confirm/confirm-dialog.component';
 import { MessageDialogComponent } from './dialogs/message/message-dialog.component';
-import { BugReportComponent } from './dialogs/report-error/bug-report.component';
+import { BugReportDialogComponent } from './dialogs/report-error/bug-report-dialog.component';
 import { BugReport } from './dialogs/report-error/report-error.interfaces';
 import { BytesPipe } from './pipes/bytes.pipe';
 import { CustomtextPipe } from './customtext/customtext.pipe';
@@ -30,19 +30,19 @@ import {GitHubService} from './dialogs/report-error/connect-github.service';
   entryComponents: [
     ConfirmDialogComponent,
     MessageDialogComponent,
-    BugReportComponent
+    BugReportDialogComponent
   ],
   declarations: [
     ConfirmDialogComponent,
     MessageDialogComponent,
-    BugReportComponent,
+    BugReportDialogComponent,
     BytesPipe,
     CustomtextPipe
   ],
   exports: [
     ConfirmDialogComponent,
     MessageDialogComponent,
-    BugReportComponent,
+    BugReportDialogComponent,
     BytesPipe,
     CustomtextPipe,
   ],
@@ -68,5 +68,5 @@ export class IqbComponentsModule {
   }
 
 }
-export {ConfirmDialogComponent, MessageDialogComponent, BugReportComponent, ServerError, ErrorHandler,
+export {ConfirmDialogComponent, MessageDialogComponent, BugReportDialogComponent, ServerError, ErrorHandler,
   CustomTextData, CustomTextDefs, BytesPipe, CustomtextPipe, CustomtextService, BugReport}; // IqbComponentsConfig

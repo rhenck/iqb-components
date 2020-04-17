@@ -4,10 +4,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { GitHubService } from './connect-github.service';
 
 @Component({
-  templateUrl: './report-error-dialog.component.html',
-  styleUrls: ['./report-error-dialog.component.css']
+  templateUrl: './bug-report-dialog.component.html',
+  styleUrls: ['./bug-report-dialog.component.css']
 })
-export class BugReportComponent implements OnInit {
+export class BugReportDialogComponent implements OnInit {
 
   constructor(
     @Inject('APP_NAME') appName: string,
