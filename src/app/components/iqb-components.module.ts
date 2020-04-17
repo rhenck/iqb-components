@@ -2,8 +2,8 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './dialogs/confirm/confirm-dialog.component';
 import { MessageDialogComponent } from './dialogs/message/message-dialog.component';
-import { BugReportDialogComponent } from './dialogs/report-error/bug-report-dialog.component';
-import { BugReport } from './dialogs/report-error/report-error.interfaces';
+import { BugReportDialogComponent } from './dialogs/bug-report/bug-report-dialog.component';
+import { BugReport } from './dialogs/bug-report/bug-report.interfaces';
 import { BytesPipe } from './pipes/bytes.pipe';
 import { CustomtextPipe } from './customtext/customtext.pipe';
 import { CustomtextService } from './customtext/customtext.service';
@@ -15,7 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import {GitHubService} from './dialogs/report-error/connect-github.service';
+import {GitHubService} from './dialogs/bug-report/github.service';
 
 @NgModule({
   imports: [

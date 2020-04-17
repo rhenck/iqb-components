@@ -1,7 +1,7 @@
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BugReport } from './report-error.interfaces';
+import { BugReport } from './bug-report.interfaces';
 import { Component, OnInit, Inject } from '@angular/core';
-import { GitHubService } from './connect-github.service';
+import { GitHubService } from './github.service';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',

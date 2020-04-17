@@ -1,8 +1,8 @@
-import {Inject, Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
-import { GitHubIssue, GitHubRepository } from './report-error.interfaces';
+import { catchError, map } from 'rxjs/operators';
+import { GitHubIssue, GitHubRepository } from './bug-report.interfaces';
 
 @Injectable()
 export class GitHubService {
