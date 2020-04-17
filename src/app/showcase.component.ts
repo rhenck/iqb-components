@@ -5,8 +5,8 @@ import {
   CustomtextService,
   MessageDialogComponent,
   ServerError,
-  ReportErrorDialogComponent,
-  ReportableErrorData
+  BugReportComponent,
+  BugReport
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
@@ -45,7 +45,7 @@ export class Showcase {
 
   messageDialogResult: any;
 
-  reportErrorDialogData: ReportableErrorData = {
+  reportErrorDialogData: BugReport = {
     errorIdentifier: '#1337',
     reporterName: 'paf@iqb.de',
     internalText: 'error in line 135',
@@ -101,9 +101,9 @@ export class Showcase {
   }
 
 
-  openErrorReportDialog(): void {
+  openBugReportDialog(): void {
 
-    const dialogRef = this.dialog.open(ReportErrorDialogComponent, {
+    const dialogRef = this.dialog.open(BugReportComponent, {
       width: 'auto',
       data: Object.assign({}, this.reportErrorDialogData),
     });

@@ -1,4 +1,4 @@
-export interface ReportableErrorData {
+export interface BugReport {
     internalText: string;
     errorIdentifier?: string;
     comment?: string;
@@ -8,6 +8,7 @@ export interface ReportableErrorData {
     product?: string;
     version?: string;
     repository?: string;
+    server?: string
 }
 
 export interface GitHubIssue {

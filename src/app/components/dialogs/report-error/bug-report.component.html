@@ -5,19 +5,19 @@
   <form>
     <mat-form-field>
       <label>
-        <textarea matInput placeholder="Kommentar" [(ngModel)]="errorData.comment" name="comment"></textarea>
+        <textarea matInput placeholder="Kommentar" [(ngModel)]="bugReport.comment" name="comment"></textarea>
       </label>
     </mat-form-field>
     <br>
     <mat-form-field>
       <label>
-        <input matInput placeholder="Ihr Name" [(ngModel)]="errorData.reporterName" name="reporterName">
+        <input matInput placeholder="Ihr Name" [(ngModel)]="bugReport.reporterName" name="reporterName">
       </label>
     </mat-form-field>
     <br>
     <mat-form-field>
       <label>
-        <input matInput placeholder="Ihre Email" [(ngModel)]="errorData.reporterEmail" name="reporter">
+        <input matInput placeholder="Ihre Email" [(ngModel)]="bugReport.reporterEmail" name="reporter">
       </label>
     </mat-form-field>
     <br>
@@ -25,25 +25,25 @@
   <p>
     <label>Interne Fehlerinformationen</label><br>
     <code>
-      {{errorData.internalText}}
+      {{bugReport.internalText}}
     </code>
   </p>
   <p>
     <label>Interne Fehlerkennung</label><br>
     <code>
-      {{errorData.errorIdentifier}}
+      {{bugReport.errorIdentifier}}
     </code>
   </p>
   <p>
     <label>Produkt / Version</label><br>
     <code>
-      {{errorData.product}} / {{errorData.version}}
+      {{bugReport.product}} / {{bugReport.version}}
     </code>
   </p>
   <p>
     <label>Repository</label><br>
     <code>
-      {{errorData.repository}}
+      {{bugReport.repository}}
     </code>
   </p>
 </mat-dialog-content>
