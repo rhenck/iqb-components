@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Fehler melden</h1>
 <mat-dialog-content>
-  <p>Es tut uns leid! Leider ist hier eine Fehler passiert. Helfen Sie uns ihn in zukunft zu vermeiden
-    und Melden Sie ihn.</p>
+  <p>Es tut uns leid! Leider ist hier eine Fehler passiert. Helfen Sie uns, ihn in zukunft zu vermeiden
+    und melden Sie ihn!</p>
   <form>
     <mat-form-field>
       <label>
@@ -48,6 +48,6 @@
   </p>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button>Melden</button>
+  <button mat-raised-button (click)="submitIssue()">Melden</button>
   <button mat-raised-button mat-dialog-close>Abbrechen</button>
 </mat-dialog-actions>

@@ -124,6 +124,7 @@ export class Showcase {
 
 
   demoHttpError() {
+
     this.scs.checkError(
         this.httpErrorData.url,
         this.httpErrorData.parameterName,
