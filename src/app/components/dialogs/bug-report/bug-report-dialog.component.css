@@ -6,3 +6,12 @@ mat-dialog-content {
 mat-form-field {
   width: 100%;
 }
+
+code {
+  white-space: pre;
+  overflow: auto;
+  background: lightgray;
+  border-radius: 2px;
+  display: block;
+  padding: 2px;
+}

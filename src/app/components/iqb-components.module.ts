@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './dialogs/confirm/confirm-dialog.component';
 import { MessageDialogComponent } from './dialogs/message/message-dialog.component';
 import { BugReportDialogComponent } from './dialogs/bug-report/bug-report-dialog.component';
-import { BugReport } from './dialogs/bug-report/bug-report.interfaces';
+import { BugReport } from './dialogs/bug-report/bug-report.class';
 import { BytesPipe } from './pipes/bytes.pipe';
 import { CustomtextPipe } from './customtext/customtext.pipe';
 import { CustomtextService } from './customtext/customtext.service';

@@ -19,8 +19,15 @@ platformBrowserDynamic([
     useValue: name
   },
   {
-    provide: "APP_REPOSITORY",
-    useValue: repository.url
+    provide: "GITHUB_DATA",
+    useValue: {
+      token: environment.gitHubToken,
+      user: environment.gitHubUser,
+      repositoryUrls: {
+        'main': repository.url,
+        ...environment.gitHubRepositories
+      },
+    }
   }
 ]).bootstrapModule(AppModule)
   .catch(err => console.error(err));

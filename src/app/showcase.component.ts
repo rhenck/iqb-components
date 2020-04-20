@@ -45,15 +45,15 @@ export class Showcase {
 
   messageDialogResult: any;
 
-  reportErrorDialogData: BugReport = {
+  reportErrorDialogData = new BugReport({
+    title: "error-title",
     errorIdentifier: '#1337',
-    reporterName: 'paf@iqb.de',
+    reporterName: 'paf',
     internalText: 'error in line 135',
-    repository: "xxx"
-  }
+    repository: "demo"
+  });
 
   reportErrorDialogResult: any;
-
 
   pipeBytesValue = '1, 100, 10000, 100000, 1000000, 10000000, 100000000, 10000000000000000';
 
@@ -111,8 +111,6 @@ export class Showcase {
         console.log('The dialog was closed with:', result);
         this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
       });
-
-
   }
 
 
@@ -126,7 +124,7 @@ export class Showcase {
     } catch (error) {
 
       const dialogRef = this.dialog.open(BugReportDialogComponent, {
-        data: error,
+        data: BugReport.fromJsError(error),
       });
 
       dialogRef.afterClosed().subscribe(result => {

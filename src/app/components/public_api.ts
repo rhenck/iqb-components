@@ -2,6 +2,7 @@ export * from './iqb-components.module';
 export * from './dialogs/confirm/confirm-dialog.component';
 export * from './dialogs/message/message-dialog.component';
 export * from './dialogs/bug-report/bug-report-dialog.component';
+export * from './dialogs/bug-report/bug-report.class';
 export * from './pipes/bytes.pipe';
 export * from './iqb-components.classes';
 export * from './customtext/customtext.pipe';

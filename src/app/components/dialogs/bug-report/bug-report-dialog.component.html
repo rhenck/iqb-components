@@ -11,39 +11,21 @@
     <br>
     <mat-form-field>
       <label>
-        <input matInput placeholder="Ihr Name" [(ngModel)]="bugReport.reporterName" name="reporterName">
+        <input matInput placeholder="Ihr Name (freiwillig)" [(ngModel)]="bugReport.reporterName" name="reporterName">
       </label>
     </mat-form-field>
     <br>
     <mat-form-field>
       <label>
-        <input matInput placeholder="Ihre Email" [(ngModel)]="bugReport.reporterEmail" name="reporter">
+        <input matInput placeholder="Ihre Email (freiwillig)" [(ngModel)]="bugReport.reporterEmail" name="reporter">
       </label>
     </mat-form-field>
     <br>
   </form>
   <p>
-    <label>Interne Fehlerinformationen</label><br>
+    <label>Folgende Daten werden gesendet</label><br>
     <code>
-      {{bugReport.internalText}}
-    </code>
-  </p>
-  <p>
-    <label>Interne Fehlerkennung</label><br>
-    <code>
-      {{bugReport.errorIdentifier}}
-    </code>
-  </p>
-  <p>
-    <label>Produkt / Version</label><br>
-    <code>
-      {{bugReport.product}} / {{bugReport.version}}
-    </code>
-  </p>
-  <p>
-    <label>Repository</label><br>
-    <code>
-      {{bugReport.repository}}
+      {{bugReport.totext()}}
     </code>
   </p>
 </mat-dialog-content>

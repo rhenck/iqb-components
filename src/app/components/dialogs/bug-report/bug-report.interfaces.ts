@@ -1,15 +1,16 @@
-export interface BugReport {
-    internalText: string;
-    errorIdentifier?: string;
-    comment?: string;
-    reporterName?: string;
-    reporterEmail?: string;
-    date?: number;
-    product?: string;
-    version?: string;
-    repository?: string;
-    server?: string
-}
+// export interface BugReport {
+//     title: string;
+//     internalText: string;
+//     errorIdentifier?: string;
+//     comment?: string;
+//     reporterName?: string;
+//     reporterEmail?: string;
+//     date?: Date;
+//     product?: string;
+//     version?: string;
+//     repository?: string;
+//     url?: string
+// }
 
 export interface GitHubIssue {
     title: string;
@@ -20,5 +21,10 @@ export interface GitHubIssue {
 export interface GitHubRepository {
     owner: string;
     name: string;
-    url: string;
+}
+
+export interface GitHubData {
+    repositoryUrls: {[key: string]: string},
+    user: string,
+    token: string
 }

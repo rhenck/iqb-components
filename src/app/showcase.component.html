@@ -105,6 +105,11 @@
       <form>
         <mat-form-field>
           <label>
+            <input matInput placeholder="title" [(ngModel)]="reportErrorDialogData.title" name="title">
+          </label>
+        </mat-form-field>
+        <mat-form-field>
+          <label>
             <input matInput placeholder="title" [(ngModel)]="reportErrorDialogData.internalText" name="internalText">
           </label>
         </mat-form-field>
