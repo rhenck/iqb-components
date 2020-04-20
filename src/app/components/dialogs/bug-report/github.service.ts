@@ -2,14 +2,26 @@ import {Inject, Injectable} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {GitHubData, GitHubIssue, GitHubRepository} from './bug-report.interfaces';
+import { BugReportTarget, BugReportTargetService } from './bug-report.interfaces';
+import {BugReport} from './bug-report.class';
+
+export interface GitHubData {
+    repositoryUrls: {[key: string]: string},
+    user: string,
+    token: string
+}
+
+export class GitHubRepository implements BugReportTarget {
+    owner: string;
+    name: string;
+}
 
 @Injectable()
-export class GitHubService {
+export class GitHubService implements BugReportTargetService {
 
     private readonly user: string;
     private readonly token: string;
-    public readonly repositories: GitHubRepository[];
+    public readonly targets: {[key: string]: GitHubRepository} = {};
 
     constructor(
         @Inject('GITHUB_DATA') gitHubData: GitHubData,
@@ -18,9 +30,8 @@ export class GitHubService {
 
         this.user = gitHubData.user;
         this.token = gitHubData.token;
-        this.repositories = [];
 
-        console.log(gitHubData, this.repositories);
+        console.log(gitHubData, this.targets);
 
         Object.keys(gitHubData.repositoryUrls).forEach((key: string) => {
 
@@ -29,32 +40,38 @@ export class GitHubService {
             console.log(match);
 
             if (match.length) {
-                this.repositories[key] = ({
+                this.targets[key] = ({
                     owner: match[1],
                     name: match[2]
                 });
             }
         });
 
-        console.log(gitHubData, this.repositories);
+        console.log(gitHubData, this.targets);
     }
 
 
-    //https://github.com/paflov/demo
-    publishIssue(gitHubIssue: GitHubIssue, repositoryKey: string = 'main'): Observable<string|null> {
+    publishIssue(bugReport: BugReport, repositoryKey: string = 'main'): Observable<string|null> {
 
-        const repository = this.repositories[repositoryKey];
+        const repository = this.targets[repositoryKey];
         if (typeof repository === "undefined") {
             console.error(`No repository '${repositoryKey}' defined.`);
             return of(null);
         }
 
         const url = `https://api.github.com/repos/${repository.owner}/${repository.name}/issues`;
+
+        const body = {
+            title: bugReport.title,
+            body: bugReport.toText(),
+            labels: ['BugReport']
+        }
+
         const headers = new HttpHeaders({
             Authorization: 'Basic ' + btoa(this.user + ':' + this.token)
         });
 
-        return this.http.post(url, gitHubIssue, {headers})
+        return this.http.post(url, body, {headers})
             .pipe(catchError((error: HttpErrorResponse): Observable<boolean> => {
                 console.error(`Error when reporting issue to GitHub (${repository}).`, error);
                 return of(false);

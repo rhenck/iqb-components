@@ -9,7 +9,6 @@ import { GitHubService } from './github.service';
 })
 export class BugReportDialogComponent implements OnInit {
 
-
   constructor(
     @Inject(MAT_DIALOG_DATA) private bugReport: BugReport,
     private gitHubService: GitHubService,
@@ -24,11 +23,7 @@ export class BugReportDialogComponent implements OnInit {
 
   submitIssue() {
 
-    this.gitHubService.publishIssue({
-      title: this.bugReport.title,
-      body: this.bugReport.totext(),
-      labels: ['BugReport']
-    }, this.bugReport.repository)
+    this.gitHubService.publishIssue(this.bugReport, this.bugReport.repository)
         .subscribe((issueUrl: string|null) => {
             console.log({issueUrl});
             this.dialogRef.close(issueUrl);

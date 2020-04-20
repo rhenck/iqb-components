@@ -25,7 +25,7 @@ export class BugReport {
             date = new Date(),
             product = platformBrowserDynamic().injector.get("APP_NAME", '0.0.0'),
             version = platformBrowserDynamic().injector.get("APP_VERSION", 'app'),
-            repository = "main",
+            repository = "main", // STAND DAS Nutzen oder argument?!
             url = window.location.href
         }
     ) {
@@ -50,7 +50,7 @@ export class BugReport {
         });
     }
 
-    totext() {
+    public toText() {
 
         return `# ${this.title}\n`
             + `Product: \`${this.product}\`\n`
