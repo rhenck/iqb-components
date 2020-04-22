@@ -23,8 +23,8 @@ export class BugReport {
             reporterName = 'anonymous',
             reporterEmail = "",
             date = new Date(),
-            product = platformBrowserDynamic().injector.get("APP_NAME", '0.0.0'),
-            version = platformBrowserDynamic().injector.get("APP_VERSION", 'app'),
+            product = platformBrowserDynamic().injector.get("APP_NAME", 'app'),
+            version = platformBrowserDynamic().injector.get("APP_VERSION", '0.0.0'),
             repository = "main", // STAND DAS Nutzen oder argument?!
             url = window.location.href
         }
