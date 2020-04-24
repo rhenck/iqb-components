@@ -14,7 +14,7 @@ export class BugReportDialogComponent implements OnInit {
   private targetKey: string;
   public config: BugReportDialogConfig;
 
-  public panelOpenState: boolean;
+  public fullReportPanelOpen: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
@@ -25,6 +25,8 @@ export class BugReportDialogComponent implements OnInit {
       this.targetService = dialogData.targetService;
       this.targetKey = dialogData.targetKey;
       this.config = dialogData.config ?? {hideFields: ["title"]};
+
+      this.fullReportPanelOpen = false;
   }
 
   ngOnInit() {
