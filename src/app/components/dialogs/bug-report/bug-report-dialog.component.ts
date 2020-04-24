@@ -17,6 +17,7 @@ export class BugReportDialogComponent {
   private bugReport: BugReport;
   private targetService: BugReportTargetService;
   private targetKey: string;
+
   public config: BugReportDialogConfig;
 
   public fullReportPanelOpen: boolean;
@@ -24,7 +25,7 @@ export class BugReportDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
-    private dialogRef: MatDialogRef<BugReportDialogComponent>
+    public dialogRef: MatDialogRef<BugReportDialogComponent>
   ) {
 
       this.bugReport = dialogData.report;
