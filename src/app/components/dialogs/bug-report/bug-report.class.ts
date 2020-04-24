@@ -1,9 +1,9 @@
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {Inject, Injectable} from '@angular/core';
 
-export class BugReport {
+interface BugReportData {
     title: string;
-    comment?: string;
     devInfo: string;
+    comment?: string;
     errorId?: string;
     reporterName?: string;
     reporterEmail?: string;
@@ -11,42 +11,51 @@ export class BugReport {
     product?: string;
     version?: string;
     url?: string
+}
+
+@Injectable()
+export class BugReport implements BugReportData {
+
+    public title = "";
+    public devInfo = "";
+    public errorId = "";
+    public comment = "";
+    public reporterName = "";
+    public reporterEmail = "";
+    public date: Date;
+    public product = "";
+    public version = "";
+    public url = "";
 
     constructor(
-        {
-            title,
-            internalText,
-            errorIdentifier = "",
-            comment =
-                "## Was haben Sie gemacht\n## Was sollte passieren?\n## Was ist stattdessen passiert?",
-            reporterName = 'anonymous',
-            reporterEmail = "",
-            date = new Date(),
-            product = platformBrowserDynamic().injector.get("APP_NAME", 'app'),
-            version = platformBrowserDynamic().injector.get("APP_VERSION", '0.0.0'),
-            url = window.location.href
-        }
+        initData: BugReportData,
+        @Inject('APP_NAME') appName: string,
+        @Inject('APP_VERSION') appVersion: string, // STAND funktioniert so leider nisch
     ) {
 
-        this.title = title;
-        this.devInfo = internalText;
-        this.errorId = errorIdentifier;
-        this.comment = comment;
-        this.reporterName = reporterName;
-        this.reporterEmail = reporterEmail;
-        this.date = date;
-        this.product = product;
-        this.version = version;
-        this.url = url;
+        this.title = initData.title;
+        this.devInfo = initData.devInfo;
+        this.errorId = initData.errorId;
+        this.comment = initData.comment || "## Was haben Sie gemacht\n## Was sollte passieren?\n## Was ist stattdessen passiert?";
+        this.reporterName = initData.reporterName || 'anonymous';
+        this.reporterEmail = initData.reporterEmail;
+        this.date = initData.date || new Date();
+        this.product = initData.product || appName || 'app';
+        this.version = initData.version || appVersion || '0.0.0';
+        this.url = initData.url || window.location.href;
+        console.log("XCX", initData.product , appName);
     }
 
-    static fromJsError(error: Error): BugReport {
-
-        return new BugReport({
-            title: error.name + ": " + error.message,
-            internalText: error.stack.toString()
-        });
-    }
+    // static fromJsError(error: Error): BugReport {
+    //
+    //     return new BugReport(
+    //         {
+    //             title: error.name + ": " + error.message,
+    //             devInfo: error.stack.toString()
+    //         },
+    //         appName
+    //     );
+    // }
 
     public toText() {
 

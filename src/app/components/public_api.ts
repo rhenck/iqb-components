@@ -3,6 +3,8 @@ export * from './dialogs/confirm/confirm-dialog.component';
 export * from './dialogs/message/message-dialog.component';
 export * from './dialogs/bug-report/bug-report-dialog.component';
 export * from './dialogs/bug-report/bug-report.class';
+export * from './dialogs/bug-report/github.service';
+export * from './dialogs/bug-report/bug-report.interfaces';
 export * from './pipes/bytes.pipe';
 export * from './iqb-components.classes';
 export * from './customtext/customtext.pipe';

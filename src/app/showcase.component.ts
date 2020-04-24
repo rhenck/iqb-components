@@ -49,9 +49,9 @@ export class Showcase {
 
   reportErrorDialogData = new BugReport({
     title: "error-title",
-    errorIdentifier: '#1337',
+    errorId: '#1337',
     reporterName: 'paf',
-    internalText: 'error in line 135',
+    devInfo: 'error in line 135',
   });
 
   reportErrorDialogResult: any;
@@ -128,7 +128,7 @@ export class Showcase {
 
     } catch (error) {
 
-      this.reportErrorDialogData = BugReport.fromJsError(error);
+      // this.reportErrorDialogData = BugReport.fromJsError(error);
     }
 
 
