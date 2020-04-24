@@ -1,7 +1,7 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { BugReport } from './bug-report.class';
 import { Component, OnInit, Inject } from '@angular/core';
-import {BugReportDialogData, BugReportTargetService} from './bug-report.interfaces';
+import {BugReportDialogConfig, BugReportDialogData, BugReportTargetService} from './bug-report.interfaces';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',
@@ -12,6 +12,9 @@ export class BugReportDialogComponent implements OnInit {
   private bugReport: BugReport;
   private targetService: BugReportTargetService;
   private targetKey: string;
+  public config: BugReportDialogConfig;
+
+  public panelOpenState: boolean;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
@@ -21,6 +24,7 @@ export class BugReportDialogComponent implements OnInit {
       this.bugReport = dialogData.report;
       this.targetService = dialogData.targetService;
       this.targetKey = dialogData.targetKey;
+      this.config = dialogData.config ?? {hideFields: ["title"]};
   }
 
   ngOnInit() {

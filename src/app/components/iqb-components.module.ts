@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {GitHubService} from './dialogs/bug-report/github.service';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {GitHubService} from './dialogs/bug-report/github.service';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatExpansionModule,
     FormsModule,
     MatInputModule,
   ],

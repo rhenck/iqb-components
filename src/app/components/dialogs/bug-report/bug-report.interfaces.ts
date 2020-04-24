@@ -1,11 +1,16 @@
 import {BugReport} from './bug-report.class';
 import {Observable} from 'rxjs';
 
+export interface BugReportDialogConfig {
+
+    hideFields: ['title' | 'reporterEmail' | 'reporterName' | 'comment']
+}
+
 export interface BugReportDialogData {
     report: BugReport,
     targetService: BugReportTargetService,
     targetKey: string,
-    config: any
+    config: BugReportDialogConfig
 }
 
 export interface BugReportTargetService {

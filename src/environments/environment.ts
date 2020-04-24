@@ -5,9 +5,12 @@
 
 export const environment = {
   production: false,
-  gitHubToken: '034179f9f82b7422d014c60ff24530202611ccd7',
+  gitHubToken: 'a24e9afa4fe3c37738ad99f18cbe7ee96ca72999',
   gitHubUser: 'paflov',
   gitHubRepositories: {
     "demo": "https://github.com/paflov/demo"
+  },
+  emailTargets: {
+    "default": "paflov@raflov.de"
   }
 };

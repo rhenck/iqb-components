@@ -3,8 +3,8 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 export class BugReport {
     title: string;
     comment?: string;
-    internalText: string;
-    errorIdentifier?: string;
+    devInfo: string;
+    errorId?: string;
     reporterName?: string;
     reporterEmail?: string;
     date?: Date;
@@ -29,8 +29,8 @@ export class BugReport {
     ) {
 
         this.title = title;
-        this.internalText = internalText;
-        this.errorIdentifier = errorIdentifier;
+        this.devInfo = internalText;
+        this.errorId = errorIdentifier;
         this.comment = comment;
         this.reporterName = reporterName;
         this.reporterEmail = reporterEmail;
@@ -56,8 +56,8 @@ export class BugReport {
             + `URL: \`${this.url}\` \n`
             + `Date: \`${this.date.toLocaleDateString()} ${this.date.toLocaleTimeString()}\`\n`
             + `\nReported by: \`${this.reporterName}<${this.reporterEmail}>\n`
-            + (this.errorIdentifier ? `error-id: \`${this.errorIdentifier}\`\n` : '')
+            + (this.errorId ? `error-id: \`${this.errorId}\`\n` : '')
             + `\n# Description\n${this.comment}\n`
-            + `\n# Error source code:\n\`\`\`\n${this.internalText}\n\`\`\`\n`;
+            + `\n# Error source code:\n\`\`\`\n${this.devInfo}\n\`\`\`\n`;
     }
 }

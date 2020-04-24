@@ -52,7 +52,6 @@ export class Showcase {
     errorIdentifier: '#1337',
     reporterName: 'paf',
     internalText: 'error in line 135',
-    repository: "demo"
   });
 
   reportErrorDialogResult: any;
@@ -133,7 +132,10 @@ export class Showcase {
         data: {
           report: this.reportErrorDialogData,
           targetService: this.gitHubService,
-          targetKey: 'demo'
+          targetKey: 'demo',
+          config: {
+            hideFields: ['reporterEmail', 'reporterName' ]
+          }
         }
       });
 
