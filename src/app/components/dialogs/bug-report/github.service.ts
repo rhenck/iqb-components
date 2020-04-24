@@ -56,7 +56,10 @@ export class GitHubService implements BugReportTargetService {
         const repository = this.targets[targetKey];
         if (typeof repository === "undefined") {
             console.error(`No repository '${targetKey}' defined.`);
-            return of(null);
+            return of({
+                message: `No repository '${targetKey}' defined.`,
+                success: false
+            });
         }
 
         const url = `https://api.github.com/repos/${repository.owner}/${repository.name}/issues`;
@@ -74,15 +77,8 @@ export class GitHubService implements BugReportTargetService {
         const errorText = `Error when reporting issue to GitHub (${repository.owner}/${repository.name}).`;
 
         return this.http.post(url, body, {headers})
-            .pipe(catchError((error: HttpErrorResponse): Observable<BugReportResult> => {
-                console.error(errorText, error);
-                return of({
-                    message: errorText,
-                    success: false,
-                });
-            }))
-            .pipe(map((data:object): BugReportResult => {
-                if (!data) {
+            .pipe(map((data: object): BugReportResult => {
+                if (data instanceof Error) {
                     console.error(errorText, 'no data!');
                     return {
                         message: errorText,
@@ -94,6 +90,13 @@ export class GitHubService implements BugReportTargetService {
                     message: `Bug reported to GitHub: ${data['url']}`,
                     success: true
                 };
+            }))
+            .pipe(catchError((error: HttpErrorResponse): Observable<BugReportResult> => {
+                console.error(errorText, error);
+                return of({
+                    message: errorText,
+                    success: false,
+                });
             }));
     }
 
@@ -103,7 +106,7 @@ export class GitHubService implements BugReportTargetService {
         if (typeof repository === "undefined") {
             return "http://github.com";
         }
-        return `http://github.com/${repository.owner}/${repository.name}/issues`;
+        return `https://github.com/${repository.owner}/${repository.name}/issues`;
     }
 
 }
