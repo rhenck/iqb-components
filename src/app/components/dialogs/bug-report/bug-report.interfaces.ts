@@ -14,6 +14,7 @@ export interface BugReportDialogData {
 }
 
 export interface BugReportTargetService {
+    getTargetName: (targetKey: string) => string,
     publishIssue: (bugReport: BugReport, targetKey: string) => Observable<string | null>,
     targets: {[key: string]: BugReportTarget};
 }

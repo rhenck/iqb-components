@@ -1,13 +1,13 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { BugReport } from './bug-report.class';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {BugReportDialogConfig, BugReportDialogData, BugReportTargetService} from './bug-report.interfaces';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',
   styleUrls: ['./bug-report-dialog.component.css']
 })
-export class BugReportDialogComponent implements OnInit {
+export class BugReportDialogComponent {
 
   private bugReport: BugReport;
   private targetService: BugReportTargetService;
@@ -15,6 +15,7 @@ export class BugReportDialogComponent implements OnInit {
   public config: BugReportDialogConfig;
 
   public fullReportPanelOpen: boolean;
+  public targetName: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
@@ -27,10 +28,7 @@ export class BugReportDialogComponent implements OnInit {
       this.config = dialogData.config ?? {hideFields: ["title"]};
 
       this.fullReportPanelOpen = false;
-  }
-
-  ngOnInit() {
-
+      this.targetName = this.targetService.getTargetName(dialogData.targetKey);
   }
 
   submitIssue() {

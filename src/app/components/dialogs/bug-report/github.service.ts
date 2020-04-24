@@ -85,4 +85,13 @@ export class GitHubService implements BugReportTargetService {
             }));
     }
 
+    getTargetName(targetKey: string = 'default'): string {
+
+        const repository = this.targets[targetKey];
+        if (typeof repository === "undefined") {
+            return "http://github.com";
+        }
+        return `http://github.com/${repository.owner}/${repository.name}/issues`;
+    }
+
 }
