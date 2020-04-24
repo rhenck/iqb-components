@@ -139,8 +139,9 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button (click)="openBugReportDialog()">Report manually error</button>
-      <button mat-raised-button (click)="openBugReportDialogJsError()">Report JS error</button>
+      <button mat-raised-button (click)="convertJSErrorToBugReportDialogData()">Create report for JS error</button>
+      <button mat-raised-button color="primary" (click)="openBugReportDialog()">Open Report Dialog</button>
+
     </mat-card-actions>
 
   </mat-card>

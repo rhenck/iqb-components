@@ -4,25 +4,25 @@
     und melden Sie ihn!</p>
   <form>
 
-    <mat-form-field *ngIf="config.hideFields.indexOf('title') > -1">
+    <mat-form-field *ngIf="config.hideFields.indexOf('title') < 0">
       <label>
         <input matInput placeholder="Titel" [(ngModel)]="bugReport.title" name="title">
       </label>
     </mat-form-field>
 
-    <mat-form-field *ngIf="config.hideFields.indexOf('comment') > -1">
+    <mat-form-field *ngIf="config.hideFields.indexOf('comment') < 0">
       <label>
         <textarea matInput placeholder="Fehlerbeschreibung" [(ngModel)]="bugReport.comment" name="comment"></textarea>
       </label>
     </mat-form-field>
 
-    <mat-form-field *ngIf="config.hideFields.indexOf('reporterName') > -1">
+    <mat-form-field *ngIf="config.hideFields.indexOf('reporterName') < 0">
       <label>
         <input matInput placeholder="Ihr Name (freiwillig)" [(ngModel)]="bugReport.reporterName" name="reporterName">
       </label>
     </mat-form-field>
 
-    <mat-form-field *ngIf="config.hideFields.indexOf('reporterEmail') > -1">
+    <mat-form-field *ngIf="config.hideFields.indexOf('reporterEmail') < 0">
       <label>
         <input type="email" matInput placeholder="Ihre Email (freiwillig)" [(ngModel)]="bugReport.reporterEmail" name="reporter">
       </label>
@@ -45,6 +45,6 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button (click)="submitIssue()">Melden</button>
+  <button mat-raised-button (click)="submitIssue()" color="primary">Melden</button>
   <button mat-raised-button mat-dialog-close>Abbrechen</button>
 </mat-dialog-actions>

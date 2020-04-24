@@ -119,7 +119,7 @@ export class Showcase {
   }
 
 
-  openBugReportDialogJsError(): void {
+  convertJSErrorToBugReportDialogData(): void {
 
     try {
 
@@ -128,22 +128,9 @@ export class Showcase {
 
     } catch (error) {
 
-      const dialogRef = this.dialog.open(BugReportDialogComponent, {
-        data: {
-          report: this.reportErrorDialogData,
-          targetService: this.gitHubService,
-          targetKey: 'demo',
-          config: {
-            hideFields: ['reporterEmail', 'reporterName' ]
-          }
-        }
-      });
-
-      dialogRef.afterClosed().subscribe(bugReportResult => {
-
-        this.reportErrorDialogResult = bugReportResult ? bugReportResult.message : 'aborted';
-      });
+      this.reportErrorDialogData = BugReport.fromJsError(error);
     }
+
 
   }
 
