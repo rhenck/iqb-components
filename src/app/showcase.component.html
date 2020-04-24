@@ -105,30 +105,30 @@
       <form>
         <mat-form-field>
           <label>
-            <input matInput placeholder="title" [(ngModel)]="reportErrorDialogData.title" name="title">
+            <input matInput placeholder="Error-Title" [(ngModel)]="reportErrorDialogData.title" name="title">
           </label>
         </mat-form-field>
         <mat-form-field>
           <label>
-            <input matInput placeholder="title" [(ngModel)]="reportErrorDialogData.devInfo" name="internalText">
-          </label>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-          <label>
-            <input matInput placeholder="content" [(ngModel)]="reportErrorDialogData.errorId" name="errorIdentifier">
+            <input matInput placeholder="Error-Code" [(ngModel)]="reportErrorDialogData.devInfo" name="devInfo">
           </label>
         </mat-form-field>
         <br>
         <mat-form-field>
           <label>
-            <input matInput placeholder="name" [(ngModel)]="reportErrorDialogData.reporterName" name="reporterName">
+            <input matInput placeholder="Error-Id" [(ngModel)]="reportErrorDialogData.errorId" name="errorId">
           </label>
         </mat-form-field>
         <br>
         <mat-form-field>
           <label>
-            <input matInput placeholder="email" [(ngModel)]="reportErrorDialogData.reporterEmail" name="reporterEmail">
+            <input matInput placeholder="Reporter-Name" [(ngModel)]="reportErrorDialogData.reporterName" name="reporterName">
+          </label>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="Reporter-Email" [(ngModel)]="reportErrorDialogData.reporterEmail" name="reporterEmail">
           </label>
         </mat-form-field>
         <br>

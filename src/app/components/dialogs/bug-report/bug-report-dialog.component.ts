@@ -1,7 +1,12 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { BugReport } from './bug-report.class';
 import { Component, Inject } from '@angular/core';
-import {BugReportDialogConfig, BugReportDialogData, BugReportTargetService} from './bug-report.interfaces';
+import {
+    BugReportDialogConfig,
+    BugReportDialogData,
+    BugReportResult,
+    BugReportTargetService
+} from './bug-report.interfaces';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',
@@ -34,9 +39,9 @@ export class BugReportDialogComponent {
   submitIssue() {
 
     this.targetService.publishIssue(this.bugReport, this.targetKey)
-        .subscribe((issueUrl: string|null) => {
-            console.log({issueUrl});
-            this.dialogRef.close(issueUrl);
+        .subscribe((bugReportResult: BugReportResult) => {
+            console.log(bugReportResult);
+            this.dialogRef.close(bugReportResult);
         });
   }
 }

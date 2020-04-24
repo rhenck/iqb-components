@@ -112,10 +112,10 @@ export class Showcase {
         },
       });
 
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed with:', result);
-        this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
-      });
+    dialogRef.afterClosed().subscribe(bugReportResult => {
+
+      this.reportErrorDialogResult = bugReportResult ? bugReportResult.message : 'aborted';
+    });
   }
 
 
@@ -139,10 +139,9 @@ export class Showcase {
         }
       });
 
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().subscribe(bugReportResult => {
 
-        console.log('The dialog was closed with:', result);
-        this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
+        this.reportErrorDialogResult = bugReportResult ? bugReportResult.message : 'aborted';
       });
     }
 

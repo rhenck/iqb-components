@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { BugReportTarget, BugReportTargetService } from './bug-report.interfaces';
+import {BugReportResult, BugReportTarget, BugReportTargetService} from './bug-report.interfaces';
 import {BugReport} from './bug-report.class';
 
 export interface GitHubData {
@@ -51,7 +51,7 @@ export class GitHubService implements BugReportTargetService {
     }
 
 
-    publishIssue(bugReport: BugReport, targetKey: string = 'default'): Observable<string|null> {
+    publishIssue(bugReport: BugReport, targetKey: string = 'default'): Observable<BugReportResult> {
 
         const repository = this.targets[targetKey];
         if (typeof repository === "undefined") {
@@ -71,17 +71,29 @@ export class GitHubService implements BugReportTargetService {
             Authorization: 'Basic ' + btoa(this.user + ':' + this.token)
         });
 
+        const errorText = `Error when reporting issue to GitHub (${repository.owner}/${repository.name}).`;
+
         return this.http.post(url, body, {headers})
-            .pipe(catchError((error: HttpErrorResponse): Observable<boolean> => {
-                console.error(`Error when reporting issue to GitHub (${repository}).`, error);
-                return of(false);
+            .pipe(catchError((error: HttpErrorResponse): Observable<BugReportResult> => {
+                console.error(errorText, error);
+                return of({
+                    message: errorText,
+                    success: false,
+                });
             }))
-            .pipe(map((data:object): string|null => {
-                if (data) {
-                    return data['url'];
-                } else {
-                    return null;
+            .pipe(map((data:object): BugReportResult => {
+                if (!data) {
+                    console.error(errorText, 'no data!');
+                    return {
+                        message: errorText,
+                        success: false
+                    }
                 }
+                return {
+                    uri: data['url'],
+                    message: `Bug reported to GitHub: ${data['url']}`,
+                    success: true
+                };
             }));
     }
 
