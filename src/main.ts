@@ -24,7 +24,7 @@ platformBrowserDynamic([
       token: environment.gitHubToken,
       user: environment.gitHubUser,
       repositoryUrls: {
-        'main': repository.url,
+        'default': repository.url,
         ...environment.gitHubRepositories
       },
     }

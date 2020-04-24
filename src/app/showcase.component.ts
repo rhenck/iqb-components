@@ -10,6 +10,7 @@ import {
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
+import {GitHubService} from './components/dialogs/bug-report/github.service';
 
 @Component({
   templateUrl: './showcase.component.html',
@@ -22,7 +23,8 @@ export class Showcase {
       public dialog: MatDialog,
       private scs: ShowcaseService,
       private router: Router,
-      public cts: CustomtextService
+      public cts: CustomtextService,
+      private gitHubService: GitHubService,
   ) {}
 
   title = 'iqb-components';
@@ -104,7 +106,11 @@ export class Showcase {
   openBugReportDialog(): void {
 
       const dialogRef = this.dialog.open(BugReportDialogComponent, {
-        data: this.reportErrorDialogData,
+        data: {
+          report: this.reportErrorDialogData,
+          targetService: this.gitHubService,
+          targetKey: 'demo'
+        },
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -124,10 +130,15 @@ export class Showcase {
     } catch (error) {
 
       const dialogRef = this.dialog.open(BugReportDialogComponent, {
-        data: BugReport.fromJsError(error),
+        data: {
+          report: this.reportErrorDialogData,
+          targetService: this.gitHubService,
+          targetKey: 'demo'
+        }
       });
 
       dialogRef.afterClosed().subscribe(result => {
+
         console.log('The dialog was closed with:', result);
         this.reportErrorDialogResult = (result === null) ?  'could not submit issue' : result;
       });

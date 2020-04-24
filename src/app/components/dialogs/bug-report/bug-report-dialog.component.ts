@@ -1,7 +1,7 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { BugReport } from './bug-report.class';
 import { Component, OnInit, Inject } from '@angular/core';
-import { GitHubService } from './github.service';
+import {BugReportDialogData, BugReportTargetService} from './bug-report.interfaces';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',
@@ -9,12 +9,18 @@ import { GitHubService } from './github.service';
 })
 export class BugReportDialogComponent implements OnInit {
 
+  private bugReport: BugReport;
+  private targetService: BugReportTargetService;
+  private targetKey: string;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) private bugReport: BugReport,
-    private gitHubService: GitHubService,
+    @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
     private dialogRef: MatDialogRef<BugReportDialogComponent>
   ) {
 
+      this.bugReport = dialogData.report;
+      this.targetService = dialogData.targetService;
+      this.targetKey = dialogData.targetKey;
   }
 
   ngOnInit() {
@@ -23,13 +29,10 @@ export class BugReportDialogComponent implements OnInit {
 
   submitIssue() {
 
-    this.gitHubService.publishIssue(this.bugReport, this.bugReport.repository)
+    this.targetService.publishIssue(this.bugReport, this.targetKey)
         .subscribe((issueUrl: string|null) => {
             console.log({issueUrl});
             this.dialogRef.close(issueUrl);
         });
   }
-
-
-
 }

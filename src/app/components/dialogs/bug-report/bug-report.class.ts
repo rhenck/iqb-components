@@ -2,15 +2,14 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 export class BugReport {
     title: string;
+    comment?: string;
     internalText: string;
     errorIdentifier?: string;
-    comment?: string;
     reporterName?: string;
     reporterEmail?: string;
     date?: Date;
     product?: string;
     version?: string;
-    repository?: string;
     url?: string
 
     constructor(
@@ -25,7 +24,6 @@ export class BugReport {
             date = new Date(),
             product = platformBrowserDynamic().injector.get("APP_NAME", 'app'),
             version = platformBrowserDynamic().injector.get("APP_VERSION", '0.0.0'),
-            repository = "main", // STAND DAS Nutzen oder argument?!
             url = window.location.href
         }
     ) {
