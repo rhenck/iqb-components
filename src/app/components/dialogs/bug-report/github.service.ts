@@ -2,8 +2,9 @@ import {Inject, Injectable} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {BugReportResult, BugReportTarget, BugReportTargetService} from './bug-report.interfaces';
-import {BugReport} from './bug-report.class';
+import {BugReport, BugReportResult, BugReportTarget, BugReportTargetService} from './bug-report.interfaces';
+import {BugReportService} from './bug-report.service';
+
 
 export interface GitHubData {
     repositoryUrls: {[key: string]: string},
@@ -25,7 +26,8 @@ export class GitHubService implements BugReportTargetService {
 
     constructor(
         @Inject('GITHUB_DATA') gitHubData: GitHubData,
-        private http: HttpClient
+        private http: HttpClient,
+        private bugReportService: BugReportService
     ) {
 
         this.user = gitHubData.user;
@@ -66,7 +68,7 @@ export class GitHubService implements BugReportTargetService {
 
         const body = {
             title: bugReport.title,
-            body: bugReport.toText(),
+            body: this.bugReportService.toText(bugReport),
             labels: ['BugReport']
         }
 

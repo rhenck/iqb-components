@@ -1,12 +1,13 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { BugReport } from './bug-report.class';
 import { Component, Inject } from '@angular/core';
 import {
+    BugReport,
     BugReportDialogConfig,
     BugReportDialogData,
     BugReportResult,
-    BugReportTargetService
+    BugReportTargetService,
 } from './bug-report.interfaces';
+import {BugReportService} from './bug-report.service';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',
@@ -25,7 +26,8 @@ export class BugReportDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
-    public dialogRef: MatDialogRef<BugReportDialogComponent>
+    public dialogRef: MatDialogRef<BugReportDialogComponent>,
+    private bugReportService: BugReportService
   ) {
 
       this.bugReport = dialogData.report;
@@ -44,5 +46,10 @@ export class BugReportDialogComponent {
             console.log(bugReportResult);
             this.dialogRef.close(bugReportResult);
         });
+  }
+
+  getReportAsText(): string {
+
+      return this.bugReportService.toText(this.bugReport)
   }
 }

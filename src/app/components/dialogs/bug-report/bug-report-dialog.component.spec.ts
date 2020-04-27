@@ -1,15 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { BugReportDialogComponent } from './bug-report-dialog.component';
 import {MatDialogClose, MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {BugReportResult, BugReportTargetService} from './bug-report.interfaces';
 import {Observable, of} from 'rxjs';
+import {BugReportService} from './bug-report.service';
 
 describe('BugReportDialogComponent', () => {
 
   let fixture;
-  let component: BugReportDialogComponent;
+  let dialogComponent: BugReportDialogComponent;
 
   class MockBugReportTargetService implements BugReportTargetService {
 
@@ -43,6 +44,12 @@ describe('BugReportDialogComponent', () => {
     }
   }
 
+  class MockBugReportService {
+    toText() {
+      return 'bug report as text'
+    }
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
@@ -72,33 +79,44 @@ describe('BugReportDialogComponent', () => {
           provide: MatDialog,
           useValue: 'browser'
         },
+        {
+          provide: BugReportService,
+          useValue: new MockBugReportService()
+        },
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
     fixture = TestBed.createComponent(BugReportDialogComponent);
-    component = fixture.debugElement.componentInstance;
+    dialogComponent = fixture.debugElement.componentInstance;
   });
 
 
   it('should create a component', async () => {
 
-    expect(component).toBeTruthy();
+    expect(dialogComponent).toBeTruthy();
   });
 
 
   it('should extract provided data correctly', async () => {
 
-    component.targetName = 'target of: a_key';
-    component.config = {
+    expect(dialogComponent.targetName).toEqual('target of: a_key');
+    expect(dialogComponent.config).toEqual({
       hideFields: ['title']
-    };
+    });
+  });
+
+
+  it('should be able to convert bugreport to text', async () => {
+
+    expect(dialogComponent.getReportAsText()).toEqual('bug report as text');
+
   });
 
 
   it('submit on button click', async () => {
 
-    component.submitIssue();
-    component.dialogRef.afterClosed().subscribe(result => {
+    dialogComponent.submitIssue();
+    dialogComponent.dialogRef.afterClosed().subscribe(result => {
       expect(result).toEqual({
         success: true,
         message: "ok"

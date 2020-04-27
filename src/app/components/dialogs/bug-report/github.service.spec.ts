@@ -1,6 +1,7 @@
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {GitHubService} from './github.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {BugReportService} from './bug-report.service';
 
 describe('GitHubService', () => {
 
@@ -10,17 +11,29 @@ describe('GitHubService', () => {
     const bugReport = {
         devInfo: 'some dev info',
         title: 'report title',
-        toText(): string {
-            return 'full report text';
-        }
+        comment: 'a comment',
+        errorId: 'an error-id',
+        reporterName: 'reporter\'s name',
+        reporterEmail: 'reporter\'s mail',
+        date: new Date(2020, 22, 2, 2, 22, 22),
+        url: 'http://localhost/my-app/#here',
+        product: 'my-app',
+        version: '1.0.0',
     };
+
+
+    class MockBugReportService {
+        toText() {
+            return 'bug report as text'
+        }
+    }
 
 
     beforeEach(() => {
 
         TestBed.configureTestingModule({
             imports: [
-                HttpClientTestingModule
+                HttpClientTestingModule,
             ],
             providers: [
                 GitHubService,
@@ -35,9 +48,13 @@ describe('GitHubService', () => {
                             'a_third_url': 'https://www.github.com/my/repository/'
                         }
                     }
+                },
+                {
+                    provide: BugReportService,
+                    useValue: new MockBugReportService()
                 }
             ]
-        });
+        }).compileComponents();
 
         // Returns a service with the MockBackend so we can test with dummy responses
         service = TestBed.get(GitHubService);

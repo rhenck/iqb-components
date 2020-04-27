@@ -1,5 +1,17 @@
-import {BugReport} from './bug-report.class';
 import {Observable} from 'rxjs';
+
+export interface BugReport {
+    title: string;
+    devInfo: string;
+    comment: string;
+    errorId: string;
+    reporterName: string;
+    reporterEmail: string;
+    date: Date;
+    product: string;
+    version: string;
+    url: string,
+}
 
 export interface BugReportDialogConfig {
 

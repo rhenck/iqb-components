@@ -6,11 +6,11 @@ import {
   MessageDialogComponent,
   ServerError,
   BugReportDialogComponent,
-  BugReport
+  BugReportService
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {GitHubService} from './components/dialogs/bug-report/github.service';
+import {GitHubService} from './components/dialogs/bug-report/github.service'; // TOOD import from module?!
 
 @Component({
   templateUrl: './showcase.component.html',
@@ -25,6 +25,7 @@ export class Showcase {
       private router: Router,
       public cts: CustomtextService,
       private gitHubService: GitHubService,
+      private bugReportService: BugReportService
   ) {}
 
   title = 'iqb-components';
@@ -47,7 +48,7 @@ export class Showcase {
 
   messageDialogResult: any;
 
-  reportErrorDialogData = new BugReport({
+  reportErrorDialogData = this.bugReportService.create({
     title: "error-title",
     errorId: '#1337',
     reporterName: 'paf',
