@@ -1,7 +1,7 @@
 import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {GitHubService} from './github.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {BugReportService} from './bug-report.service';
+import {BugReportService} from '../bug-report.service';
 
 describe('GitHubService', () => {
 

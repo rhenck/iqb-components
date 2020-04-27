@@ -6,11 +6,11 @@ import {
   MessageDialogComponent,
   ServerError,
   BugReportDialogComponent,
-  BugReportService
+  BugReportService,
+  GitHubService
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {GitHubService} from './components/dialogs/bug-report/github.service'; // TOOD import from module?!
 
 @Component({
   templateUrl: './showcase.component.html',
@@ -129,10 +129,8 @@ export class Showcase {
 
     } catch (error) {
 
-      // this.reportErrorDialogData = BugReport.fromJsError(error);
+      this.reportErrorDialogData = this.bugReportService.createFromJsError(error);
     }
-
-
   }
 
 

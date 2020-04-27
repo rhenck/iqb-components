@@ -2,8 +2,8 @@ import {Inject, Injectable} from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {BugReport, BugReportResult, BugReportTarget, BugReportTargetService} from './bug-report.interfaces';
-import {BugReportService} from './bug-report.service';
+import {BugReport, BugReportResult, BugReportTarget, BugReportTargetService} from '../bug-report.interfaces';
+import {BugReportService} from '../bug-report.service';
 
 
 export interface GitHubData {

@@ -6,8 +6,8 @@ import {
     BugReportDialogData,
     BugReportResult,
     BugReportTargetService,
-} from './bug-report.interfaces';
-import {BugReportService} from './bug-report.service';
+} from '../bug-report.interfaces';
+import {BugReportService} from '../bug-report.service';
 
 @Component({
   templateUrl: './bug-report-dialog.component.html',

@@ -3,9 +3,9 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { BugReportDialogComponent } from './bug-report-dialog.component';
 import {MatDialogClose, MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {BugReportResult, BugReportTargetService} from './bug-report.interfaces';
+import {BugReportResult, BugReportTargetService} from '../bug-report.interfaces';
 import {Observable, of} from 'rxjs';
-import {BugReportService} from './bug-report.service';
+import {BugReportService} from '../bug-report.service';
 
 describe('BugReportDialogComponent', () => {
 
