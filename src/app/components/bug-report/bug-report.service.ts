@@ -22,6 +22,7 @@ export class BugReportService {
         url?: string,
         product?: string;
         version?: string;
+        userAgent?: string;
     }): BugReport {
 
         return {
@@ -40,9 +41,11 @@ export class BugReportService {
 
             date: initData.date || new Date(),
             url: initData.url || window.location.href,
+            userAgent: initData.url || window.navigator.userAgent,
 
             version: initData.version || this.appVersion || '0.0.0',
             product: initData.product || this.appName || 'app',
+
         }
     }
 
@@ -63,6 +66,7 @@ export class BugReportService {
             + `Version : \`${report.version}\`\n`
             + `URL: \`${report.url}\` \n`
             + `Date: \`${report.date.toLocaleDateString()} ${report.date.toLocaleTimeString()}\`\n`
+            + `UserAgent \`${report.userAgent}\`\n`
             + `\nReported by: \`${report.reporterName}<${report.reporterEmail}>\n`
             + (report.errorId ? `error-id: \`${report.errorId}\`\n` : '')
             + `\n# Description\n${report.comment}\n`

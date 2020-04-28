@@ -11,6 +11,7 @@ export interface BugReport {
     product: string;
     version: string;
     url: string,
+    userAgent: string
 }
 
 export interface BugReportDialogConfig {

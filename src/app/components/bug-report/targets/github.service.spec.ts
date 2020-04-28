@@ -19,6 +19,7 @@ describe('GitHubService', () => {
         url: 'http://localhost/my-app/#here',
         product: 'my-app',
         version: '1.0.0',
+        userAgent: 'test'
     };
 
 
