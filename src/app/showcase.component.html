@@ -39,7 +39,7 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="openConfirmDialog()">Open Dialog</button>
+      <button mat-raised-button color="primary" (click)="openConfirmDialog()" name="openDialog">Open Dialog</button>
     </mat-card-actions>
 
   </mat-card>
@@ -89,20 +89,20 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="openMessageDialog()">Open Dialogue</button>
+      <button mat-raised-button color="primary" (click)="openMessageDialog()" name="openDialog">Open Dialogue</button>
     </mat-card-actions>
 
   </mat-card>
 
-  <mat-card id="reportErrorDialog">
-    <mat-card-title>tc-report-error-dialog</mat-card-title>
+  <mat-card id="bugReportDialog">
+    <mat-card-title>BugReport &amp; BugReportDialog</mat-card-title>
     <mat-card-subtitle>A dialogue to report an error to GitHub</mat-card-subtitle>
 
     <mat-card-content>
 
-      <p>Settings</p>
-
       <form>
+
+        <p>BugReport-Data</p>
         <mat-form-field>
           <label>
             <input matInput placeholder="Error-Title" [(ngModel)]="reportErrorDialogData.title" name="title">
@@ -113,25 +113,33 @@
             <input matInput placeholder="Error-Code" [(ngModel)]="reportErrorDialogData.devInfo" name="devInfo">
           </label>
         </mat-form-field>
-        <br>
+
         <mat-form-field>
           <label>
             <input matInput placeholder="Error-Id" [(ngModel)]="reportErrorDialogData.errorId" name="errorId">
           </label>
         </mat-form-field>
-        <br>
+
         <mat-form-field>
           <label>
             <input matInput placeholder="Reporter-Name" [(ngModel)]="reportErrorDialogData.reporterName" name="reporterName">
           </label>
         </mat-form-field>
-        <br>
+
         <mat-form-field>
           <label>
             <input matInput placeholder="Reporter-Email" [(ngModel)]="reportErrorDialogData.reporterEmail" name="reporterEmail">
           </label>
         </mat-form-field>
+
         <br>
+
+        <p>Dialog-Config</p>
+        Hide fields:<br>
+        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.title" name="hideTitle">title</label>
+        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.comment" name="hideComment">comment</label>
+        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.reporterName" name="hideReporterName">reporterName</label>
+        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.reporterEmail" name="hideReporterEmail">reporterEmail</label>
       </form>
 
       <div class="result">Result: {{reportErrorDialogResult}}</div>
@@ -140,8 +148,7 @@
 
     <mat-card-actions>
       <button mat-raised-button (click)="convertJSErrorToBugReportDialogData()">Create report for JS error</button>
-      <button mat-raised-button color="primary" (click)="openBugReportDialog()">Open Report Dialog</button>
-
+      <button mat-raised-button color="primary" (click)="openBugReportDialog()" name="openDialog">Open Report Dialog</button>
     </mat-card-actions>
 
   </mat-card>

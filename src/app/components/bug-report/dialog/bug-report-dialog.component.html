@@ -24,7 +24,7 @@
 
     <mat-form-field *ngIf="config.hideFields.indexOf('reporterEmail') < 0">
       <label>
-        <input type="email" matInput placeholder="Ihre Email (freiwillig)" [(ngModel)]="bugReport.reporterEmail" name="reporter">
+        <input type="email" matInput placeholder="Ihre Email (freiwillig)" [(ngModel)]="bugReport.reporterEmail" name="reporterEmail">
       </label>
     </mat-form-field>
 
@@ -45,6 +45,6 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-raised-button (click)="submitIssue()" color="primary">Melden</button>
+  <button *ngIf="bugReportService != null" mat-raised-button (click)="submitIssue()" color="primary">Melden</button>
   <button mat-raised-button mat-dialog-close>Abbrechen</button>
 </mat-dialog-actions>

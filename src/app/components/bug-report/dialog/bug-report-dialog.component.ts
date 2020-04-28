@@ -30,10 +30,21 @@ export class BugReportDialogComponent {
     private bugReportService: BugReportService
   ) {
 
-      this.bugReport = dialogData.report;
-      this.targetService = dialogData.targetService;
-      this.targetKey = dialogData.targetKey;
-      this.config = dialogData.config ?? {hideFields: ["title"]};
+      this.bugReport = (typeof dialogData.report === "undefined")
+          ? this.bugReportService.create({devInfo: "[unknown error]"})
+          : dialogData.report;
+
+      this.targetService = (typeof dialogData.targetService === "undefined")
+          ? null
+          : dialogData.targetService;
+
+      this.targetKey=  (typeof dialogData.targetKey === "undefined")
+          ? ""
+          : dialogData.targetKey;
+
+      this.config = (typeof dialogData.targetService === "undefined")
+          ? {hideFields: ["title"]}
+          : dialogData.config;
 
       this.fullReportPanelOpen = false;
       this.targetName = this.targetService.getTargetName(dialogData.targetKey);

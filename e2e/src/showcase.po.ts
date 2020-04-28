@@ -31,7 +31,7 @@ export class ShowcasePage {
 
   static async openDialog(container: ElementFinder): Promise<ElementFinder> {
 
-    await container.element(by.css('button[class*="mat-raised-button"]')).click();
+    await container.element(by.css('button[name*="openDialog"]')).click();
     const dialogContainer = await element(by.tagName('mat-dialog-container'));
     await browser.wait(EC.presenceOf(dialogContainer));
     return dialogContainer;

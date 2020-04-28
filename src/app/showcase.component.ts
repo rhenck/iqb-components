@@ -55,7 +55,15 @@ export class Showcase {
     devInfo: 'error in line 135',
   });
 
+  reportErrorDialogConfigHideFields = {
+    title: true,
+    comment: false,
+    reporterName: false,
+    reporterEmail: false
+  };
+
   reportErrorDialogResult: any;
+
 
   pipeBytesValue = '1, 100, 10000, 100000, 1000000, 10000000, 100000000, 10000000000000000';
 
@@ -105,13 +113,21 @@ export class Showcase {
 
   openBugReportDialog(): void {
 
-      const dialogRef = this.dialog.open(BugReportDialogComponent, {
-        data: {
-          report: this.reportErrorDialogData,
-          targetService: this.gitHubService,
-          targetKey: 'demo'
-        },
-      });
+    const config = {
+      hideFields: []
+    }
+    Object.keys(this.reportErrorDialogConfigHideFields).forEach((key: string) => {
+      if (this.reportErrorDialogConfigHideFields[key]) config.hideFields.push(key);
+    });
+
+    const dialogRef = this.dialog.open(BugReportDialogComponent, {
+      data: {
+        report: this.reportErrorDialogData,
+        targetService: this.gitHubService,
+        targetKey: 'demo',
+        config: config
+      },
+    });
 
     dialogRef.afterClosed().subscribe(bugReportResult => {
 
