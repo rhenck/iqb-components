@@ -102,33 +102,40 @@
 
       <form>
 
+        <p>Target</p>
+        <mat-select [(value)]="bugReportTargetKey" id="bugReportTargetKey">
+          <mat-option *ngFor="let item of gitHubService.targets | keyvalue" [value]="item.key">
+            {{item.key}} ({{item.value.owner}}/{{item.value.name}})
+          </mat-option>
+        </mat-select>
+
         <p>BugReport-Data</p>
         <mat-form-field>
           <label>
-            <input matInput placeholder="Error-Title" [(ngModel)]="reportErrorDialogData.title" name="title">
+            <input matInput placeholder="Error-Title" [(ngModel)]="bugReportDialogData.title" name="title">
           </label>
         </mat-form-field>
         <mat-form-field>
           <label>
-            <input matInput placeholder="Error-Code" [(ngModel)]="reportErrorDialogData.devInfo" name="devInfo">
-          </label>
-        </mat-form-field>
-
-        <mat-form-field>
-          <label>
-            <input matInput placeholder="Error-Id" [(ngModel)]="reportErrorDialogData.errorId" name="errorId">
+            <input matInput placeholder="Error-Code" [(ngModel)]="bugReportDialogData.devInfo" name="devInfo">
           </label>
         </mat-form-field>
 
         <mat-form-field>
           <label>
-            <input matInput placeholder="Reporter-Name" [(ngModel)]="reportErrorDialogData.reporterName" name="reporterName">
+            <input matInput placeholder="Error-Id" [(ngModel)]="bugReportDialogData.errorId" name="errorId">
           </label>
         </mat-form-field>
 
         <mat-form-field>
           <label>
-            <input matInput placeholder="Reporter-Email" [(ngModel)]="reportErrorDialogData.reporterEmail" name="reporterEmail">
+            <input matInput placeholder="Reporter-Name" [(ngModel)]="bugReportDialogData.reporterName" name="reporterName">
+          </label>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="Reporter-Email" [(ngModel)]="bugReportDialogData.reporterEmail" name="reporterEmail">
           </label>
         </mat-form-field>
 
@@ -136,13 +143,13 @@
 
         <p>Dialog-Config</p>
         Hide fields:<br>
-        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.title" name="hideTitle">title</label>
-        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.comment" name="hideComment">comment</label>
-        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.reporterName" name="hideReporterName">reporterName</label>
-        <label><input type="checkbox" [(ngModel)]="reportErrorDialogConfigHideFields.reporterEmail" name="hideReporterEmail">reporterEmail</label>
+        <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.title" name="hideTitle">title</label>
+        <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.comment" name="hideComment">comment</label>
+        <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.reporterName" name="hideReporterName">reporterName</label>
+        <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.reporterEmail" name="hideReporterEmail">reporterEmail</label>
       </form>
 
-      <div class="result">Result: {{reportErrorDialogResult}}</div>
+      <div class="result">Result: {{bugReportDialogResult}}</div>
 
     </mat-card-content>
 

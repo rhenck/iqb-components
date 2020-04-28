@@ -1,7 +1,8 @@
 <h1 mat-dialog-title>Fehler melden</h1>
 <mat-dialog-content>
-  <p>Es tut uns leid! Leider ist hier ein Fehler passiert. Helfen Sie uns, ihn in zukunft zu vermeiden
+  <p>Es tut uns leid! Leider ist hier ein Fehler passiert. Helfen Sie uns, ihn in Zukunft zu vermeiden
     und melden Sie ihn!</p>
+
   <form>
 
     <mat-form-field *ngIf="config.hideFields.indexOf('title') < 0">
@@ -12,7 +13,7 @@
 
     <mat-form-field *ngIf="config.hideFields.indexOf('comment') < 0">
       <label>
-        <textarea matInput placeholder="Fehlerbeschreibung" [(ngModel)]="bugReport.comment" name="comment"></textarea>
+        <textarea matInput placeholder="Fehlerbeschreibung" [(ngModel)]="bugReport.comment" name="comment" style="height:7em"></textarea>
       </label>
     </mat-form-field>
 
@@ -45,6 +46,6 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button *ngIf="bugReportService != null" mat-raised-button (click)="submitIssue()" color="primary">Melden</button>
-  <button mat-raised-button mat-dialog-close>Abbrechen</button>
+  <button *ngIf="bugReportService != null" mat-raised-button (click)="submitIssue()" color="primary" id="report-bug-send">Melden</button>
+  <button mat-raised-button mat-dialog-close id="report-bug-abort">Abbrechen</button>
 </mat-dialog-actions>

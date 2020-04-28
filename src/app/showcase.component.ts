@@ -48,21 +48,23 @@ export class Showcase {
 
   messageDialogResult: any;
 
-  reportErrorDialogData = this.bugReportService.create({
+  bugReportDialogData = this.bugReportService.create({
     title: "error-title",
     errorId: '#1337',
     reporterName: 'paf',
     devInfo: 'error in line 135',
   });
 
-  reportErrorDialogConfigHideFields = {
+  bugReportDialogConfigHideFields = {
     title: true,
     comment: false,
     reporterName: false,
     reporterEmail: false
   };
 
-  reportErrorDialogResult: any;
+  bugReportTargetKey = 'default';
+
+  bugReportDialogResult: any;
 
 
   pipeBytesValue = '1, 100, 10000, 100000, 1000000, 10000000, 100000000, 10000000000000000';
@@ -83,6 +85,7 @@ export class Showcase {
     ctv1: '',
     ctv2: '',
   };
+
 
   openConfirmDialog(): void {
 
@@ -116,22 +119,22 @@ export class Showcase {
     const config = {
       hideFields: []
     }
-    Object.keys(this.reportErrorDialogConfigHideFields).forEach((key: string) => {
-      if (this.reportErrorDialogConfigHideFields[key]) config.hideFields.push(key);
+    Object.keys(this.bugReportDialogConfigHideFields).forEach((key: string) => {
+      if (this.bugReportDialogConfigHideFields[key]) config.hideFields.push(key);
     });
 
     const dialogRef = this.dialog.open(BugReportDialogComponent, {
       data: {
-        report: this.reportErrorDialogData,
+        report: this.bugReportDialogData,
         targetService: this.gitHubService,
-        targetKey: 'demo',
+        targetKey: this.bugReportTargetKey,
         config: config
       },
     });
 
     dialogRef.afterClosed().subscribe(bugReportResult => {
 
-      this.reportErrorDialogResult = bugReportResult ? bugReportResult.message : 'aborted';
+      this.bugReportDialogResult = bugReportResult ? bugReportResult.message : 'aborted';
     });
   }
 
@@ -145,7 +148,7 @@ export class Showcase {
 
     } catch (error) {
 
-      this.reportErrorDialogData = this.bugReportService.createFromJsError(error);
+      this.bugReportDialogData = this.bugReportService.createFromJsError(error);
     }
   }
 

@@ -25,7 +25,7 @@ platformBrowserDynamic([
       user: environment.gitHubUser,
       repositoryUrls: {
         'default': repository.url,
-        ...environment.gitHubRepositories
+        'dummy': "https://github.com/iqb-berlin/non-existing-repo",
       },
     }
   }

@@ -1,6 +1,7 @@
 import { ShowcasePage } from './showcase.po';
 import {browser, by, element, ExpectedConditions as EC, logging} from 'protractor';
 
+
 describe('Bug Report', () => {
     let page: ShowcasePage;
 
@@ -8,11 +9,11 @@ describe('Bug Report', () => {
         page = new ShowcasePage();
     });
 
-    fit('dialog should pop up and set values and config according to setup.', async () => {
+    const containerCard = element(by.id('bugReportDialog'));
+
+    it('dialog should pop up and set values and config according to setup.', async () => {
 
         await ShowcasePage.navigateTo();
-
-        const containerCard = element(by.id('bugReportDialog'));
 
         await ShowcasePage.typeIn(containerCard, 'title', 'abc');
         await ShowcasePage.typeIn(containerCard, 'devInfo', 'def');
@@ -22,7 +23,6 @@ describe('Bug Report', () => {
         await element(by.name('hideComment')).click();
 
         let dialogContainer = await ShowcasePage.openDialog(containerCard);
-        await browser.sleep(10000);
 
         await expect(dialogContainer.element(by.name('title')).isPresent()).toBeTruthy()
         await expect(dialogContainer.element(by.name('comment')).isPresent()).toBeFalsy();
@@ -35,6 +35,31 @@ describe('Bug Report', () => {
         await dialogContainer.all(by.tagName('button')).last().click();
         await browser.wait(EC.stalenessOf(dialogContainer));
     });
+
+
+    xit('dialog should return error, if can not send BugReport to target.', async () => {
+
+        await ShowcasePage.navigateTo();
+
+        await ShowcasePage.selectFromMatSelect(element(by.id("bugReportTargetKey")), 'dummy')
+
+        const dialogContainer = await ShowcasePage.openDialog(containerCard);
+
+        await dialogContainer.element(by.id('report-bug-send')).click();
+
+        await browser.wait(EC.stalenessOf(dialogContainer));
+
+        console.log("XX:" + await containerCard.element(by.css('.result')).getText());
+        const result = await containerCard.element(by.css('.result')).getText();
+
+        await expect(result)
+            .toEqual('Result: Error when reporting issue to GitHub (iqb-berlin/non-existing-repo).');
+
+        // at this point we resign from testing the success case since http mockModule for angular
+        // and setting up a complete mock-backend for this single call would be to much overhead
+        // https://github.com/angular/protractor/blob/88a1b3a30386771bcb84eb6b79d19fa256589f2c/lib/browser.ts#L971-L972
+    });
+
 
     afterEach(async () => {
         // Assert that there are no errors emitted from the browser
