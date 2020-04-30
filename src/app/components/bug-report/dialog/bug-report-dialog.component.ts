@@ -23,6 +23,7 @@ export class BugReportDialogComponent {
 
   public fullReportPanelOpen: boolean;
   public targetName: string;
+  public isSending = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) dialogData: BugReportDialogData,
@@ -52,7 +53,8 @@ export class BugReportDialogComponent {
 
   submitIssue() {
 
-    this.targetService.publishIssue(this.bugReport, this.targetKey)
+      this.isSending = true;
+      this.targetService.publishIssue(this.bugReport, this.targetKey)
         .subscribe((bugReportResult: BugReportResult) => {
             this.dialogRef.close(bugReportResult);
         });
