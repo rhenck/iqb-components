@@ -50,6 +50,8 @@ export class GitHubService implements BugReportTargetService {
 
     publishIssue(bugReport: BugReport, targetKey: string = 'default'): Observable<BugReportResult> {
 
+        bugReport = this.bugReportService.applyDefaults(bugReport);
+
         const repository = this.targets[targetKey];
         if (typeof repository === "undefined") {
             console.error(`No repository '${targetKey}' defined.`);

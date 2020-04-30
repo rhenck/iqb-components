@@ -27,6 +27,9 @@ describe('GitHubService', () => {
         toText() {
             return 'bug report as text'
         }
+        applyDefaults(any) {
+            return any;
+        }
     }
 
 

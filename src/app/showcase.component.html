@@ -112,30 +112,30 @@
         <p>BugReport-Data</p>
         <mat-form-field>
           <label>
-            <input matInput placeholder="Error-Title" [(ngModel)]="bugReportDialogData.title" name="title">
+            <input matInput placeholder="Error-Title" [(ngModel)]="bugReportDialogReport.title" name="title">
           </label>
         </mat-form-field>
         <mat-form-field>
           <label>
-            <input matInput placeholder="Error-Code" [(ngModel)]="bugReportDialogData.devInfo" name="devInfo">
-          </label>
-        </mat-form-field>
-
-        <mat-form-field>
-          <label>
-            <input matInput placeholder="Error-Id" [(ngModel)]="bugReportDialogData.errorId" name="errorId">
+            <input matInput placeholder="Error-Code" [(ngModel)]="bugReportDialogReport.devInfo" name="devInfo">
           </label>
         </mat-form-field>
 
         <mat-form-field>
           <label>
-            <input matInput placeholder="Reporter-Name" [(ngModel)]="bugReportDialogData.reporterName" name="reporterName">
+            <input matInput placeholder="Error-Id" [(ngModel)]="bugReportDialogReport.errorId" name="errorId">
           </label>
         </mat-form-field>
 
         <mat-form-field>
           <label>
-            <input matInput placeholder="Reporter-Email" [(ngModel)]="bugReportDialogData.reporterEmail" name="reporterEmail">
+            <input matInput placeholder="Reporter-Name" [(ngModel)]="bugReportDialogReport.reporterName" name="reporterName">
+          </label>
+        </mat-form-field>
+
+        <mat-form-field>
+          <label>
+            <input matInput placeholder="Reporter-Email" [(ngModel)]="bugReportDialogReport.reporterEmail" name="reporterEmail">
           </label>
         </mat-form-field>
 
@@ -147,6 +147,13 @@
         <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.comment" name="hideComment">comment</label>
         <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.reporterName" name="hideReporterName">reporterName</label>
         <label><input type="checkbox" [(ngModel)]="bugReportDialogConfigHideFields.reporterEmail" name="hideReporterEmail">reporterEmail</label>
+
+        <mat-form-field>
+          <label>
+            <textarea matInput placeholder="Comment-Template" [(ngModel)]="bugReportDialogCommentTemplate" name="commentTemplate"></textarea>
+          </label>
+        </mat-form-field>
+
       </form>
 
       <div class="result">Result: {{bugReportDialogResult}}</div>

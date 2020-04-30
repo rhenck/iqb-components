@@ -27,7 +27,7 @@ describe('BugReportService', () => {
 
     it('create BugReport with now as default time', () =>  {
 
-        const bugReport = bugReportService.create({
+        const bugReport = bugReportService.applyDefaults({
             devInfo: "some error line"
         });
 
@@ -37,7 +37,7 @@ describe('BugReportService', () => {
 
     it('create BugReport with provided APP_VERSION and APP_NAME', () =>  {
 
-        const bugReport = bugReportService.create({
+        const bugReport = bugReportService.applyDefaults({
             devInfo: "some error line"
         });
 

@@ -48,6 +48,9 @@ describe('BugReportDialogComponent', () => {
     toText() {
       return 'bug report as text'
     }
+    applyDefaults(any) {
+      return any;
+    }
   }
 
   beforeEach(async () => {

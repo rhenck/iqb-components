@@ -30,9 +30,7 @@ export class BugReportDialogComponent {
     private bugReportService: BugReportService
   ) {
 
-      this.bugReport = (typeof dialogData.report === "undefined")
-          ? this.bugReportService.create({devInfo: "[unknown error]"})
-          : dialogData.report;
+      this.bugReport = this.bugReportService.applyDefaults(dialogData.report || {});
 
       this.targetService = (typeof dialogData.targetService === "undefined")
           ? null
@@ -48,6 +46,8 @@ export class BugReportDialogComponent {
 
       this.fullReportPanelOpen = false;
       this.targetName = this.targetService.getTargetName(dialogData.targetKey);
+
+      this.bugReport.comment = this.bugReport.comment || this.config.commentTemplate;
   }
 
   submitIssue() {

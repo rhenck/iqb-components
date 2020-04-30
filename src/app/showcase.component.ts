@@ -11,6 +11,7 @@ import {
 } from './components/iqb-components.module';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
+import {BugReport} from './components/bug-report/bug-report.interfaces';
 
 @Component({
   templateUrl: './showcase.component.html',
@@ -48,12 +49,12 @@ export class Showcase {
 
   messageDialogResult: any;
 
-  bugReportDialogData = this.bugReportService.create({
+  bugReportDialogReport: BugReport = {
     title: "error-title",
     errorId: '#1337',
     reporterName: 'paf',
     devInfo: 'error in line 135',
-  });
+  };
 
   bugReportDialogConfigHideFields = {
     title: true,
@@ -61,6 +62,11 @@ export class Showcase {
     reporterName: false,
     reporterEmail: false
   };
+
+  bugReportDialogCommentTemplate =
+    "## What have you done?\n\n" +
+    "## What should have happened?\n\n" +
+    "## Was happened instead?";
 
   bugReportTargetKey = 'default';
 
@@ -117,7 +123,8 @@ export class Showcase {
   openBugReportDialog(): void {
 
     const config = {
-      hideFields: []
+      hideFields: [],
+      commentTemplate: this.bugReportDialogCommentTemplate
     }
     Object.keys(this.bugReportDialogConfigHideFields).forEach((key: string) => {
       if (this.bugReportDialogConfigHideFields[key]) config.hideFields.push(key);
@@ -125,7 +132,7 @@ export class Showcase {
 
     const dialogRef = this.dialog.open(BugReportDialogComponent, {
       data: {
-        report: this.bugReportDialogData,
+        report: this.bugReportDialogReport,
         targetService: this.gitHubService,
         targetKey: this.bugReportTargetKey,
         config: config
@@ -148,7 +155,7 @@ export class Showcase {
 
     } catch (error) {
 
-      this.bugReportDialogData = this.bugReportService.createFromJsError(error);
+      this.bugReportDialogReport = this.bugReportService.createFromJsError(error);
     }
   }
 

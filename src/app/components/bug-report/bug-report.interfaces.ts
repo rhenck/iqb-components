@@ -1,22 +1,25 @@
 import {Observable} from 'rxjs';
 
 export interface BugReport {
-    title: string;
-    devInfo: string;
-    comment: string;
-    errorId: string;
-    reporterName: string;
-    reporterEmail: string;
-    date: Date;
-    product: string;
-    version: string;
-    url: string,
-    userAgent: string
+    title?: string;
+    comment?: string;
+
+    devInfo?: string;           // stack trace, console.output or internal error information
+    errorId?: string;           // an error identifier. Can be a unique ID or an internal Error-Class or whatever
+    reporterName?: string;
+    reporterEmail?: string;
+
+    date?: Date;
+    url?: string,
+    userAgent?: string;         // userAgent string
+
+    product?: string;           // name of your app
+    version?: string;           // version of your app
 }
 
 export interface BugReportDialogConfig {
-
-    hideFields: ['title' | 'reporterEmail' | 'reporterName' | 'comment']
+    hideFields: ['title' | 'reporterEmail' | 'reporterName' | 'comment'],
+    commentTemplate?: string
 }
 
 export interface BugReportDialogData {

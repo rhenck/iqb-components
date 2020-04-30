@@ -16,24 +16,29 @@ describe('Bug Report', () => {
         await ShowcasePage.navigateTo();
 
         await ShowcasePage.typeIn(containerCard, 'title', 'abc');
-        await ShowcasePage.typeIn(containerCard, 'devInfo', 'def');
+        await ShowcasePage.typeIn(containerCard, 'devInfo', '');
         await ShowcasePage.typeIn(containerCard, 'reporterName', 'ghi');
         await ShowcasePage.typeIn(containerCard, 'reporterEmail', 'jkl');
         await element(by.name('hideTitle')).click();
-        await element(by.name('hideComment')).click();
+        await element(by.name('hideReporterEmail')).click();
+        await ShowcasePage.typeIn(containerCard, 'commentTemplate', 'mno');
 
-        let dialogContainer = await ShowcasePage.openDialog(containerCard);
+        let dialog = await ShowcasePage.openDialog(containerCard);
 
-        await expect(dialogContainer.element(by.name('title')).isPresent()).toBeTruthy()
-        await expect(dialogContainer.element(by.name('comment')).isPresent()).toBeFalsy();
-        await expect(dialogContainer.element(by.name('reporterName')).isPresent()).toBeTruthy();
-        await expect(dialogContainer.element(by.name('reporterEmail')).isPresent()).toBeTruthy();
-        await expect(dialogContainer.element(by.name('title')).getAttribute("value")).toEqual("abc")
-        await expect(dialogContainer.element(by.name('reporterName')).getAttribute("value")).toEqual("ghi")
-        await expect(dialogContainer.element(by.name('reporterEmail')).getAttribute("value")).toEqual("jkl")
+        await expect(dialog.element(by.name('title')).isPresent()).toBeTruthy()
+        await expect(dialog.element(by.name('comment')).isPresent()).toBeTruthy();
+        await expect(dialog.element(by.name('reporterName')).isPresent()).toBeTruthy();
+        await expect(dialog.element(by.name('reporterEmail')).isPresent()).toBeFalsy();
+        await expect(dialog.element(by.name('title')).getAttribute("value")).toEqual("abc");
+        await expect(dialog.element(by.name('reporterName')).getAttribute("value")).toEqual("ghi");
+        await expect(dialog.element(by.name('comment')).getAttribute("value")).toEqual("mno");
 
-        await dialogContainer.all(by.tagName('button')).last().click();
-        await browser.wait(EC.stalenessOf(dialogContainer));
+        await dialog.element(by.tagName('mat-expansion-panel')).click();
+        await expect(dialog.element(by.id('full-report')).getText())
+            .toContain('./src/app/components/bug-report/bug-report.service.ts');
+
+        await dialog.all(by.tagName('button')).last().click();
+        await browser.wait(EC.stalenessOf(dialog));
     });
 
 
