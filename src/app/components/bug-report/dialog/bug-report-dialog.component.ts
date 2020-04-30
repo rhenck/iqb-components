@@ -54,7 +54,6 @@ export class BugReportDialogComponent {
 
     this.targetService.publishIssue(this.bugReport, this.targetKey)
         .subscribe((bugReportResult: BugReportResult) => {
-            console.log(bugReportResult);
             this.dialogRef.close(bugReportResult);
         });
   }

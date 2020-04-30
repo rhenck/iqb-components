@@ -33,13 +33,10 @@ export class GitHubService implements BugReportTargetService {
         this.user = gitHubData.user;
         this.token = gitHubData.token;
 
-        console.log(gitHubData, this.targets);
-
         Object.keys(gitHubData.repositoryUrls).forEach((key: string) => {
 
             const repositoryUrl = gitHubData.repositoryUrls[key];
             const match = /github\.com\/([\w-]+)\/([\w-]+)/gm.exec(repositoryUrl);
-            console.log(match);
 
             if (match.length) {
                 this.targets[key] = ({
@@ -48,8 +45,6 @@ export class GitHubService implements BugReportTargetService {
                 });
             }
         });
-
-        console.log(gitHubData, this.targets);
     }
 
 

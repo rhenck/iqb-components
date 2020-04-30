@@ -71,7 +71,7 @@ describe('GitHubService', () => {
     });
 
 
-    it('should convert provided GitHub-urls into targets in constructor', () => {
+    it('should convert provided GitHub-URLs into targets in constructor', () => {
 
         expect(service.targets).toEqual({
             'an_url': {owner: 'my', name: 'repository'},

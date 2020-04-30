@@ -1,5 +1,5 @@
 import { ShowcasePage } from './showcase.po';
-import {browser, by, element, ExpectedConditions as EC, logging} from 'protractor';
+import {browser, by, element, ExpectedConditions as EC} from 'protractor';
 
 
 describe('Bug Report', () => {
@@ -37,7 +37,7 @@ describe('Bug Report', () => {
     });
 
 
-    xit('dialog should return error, if can not send BugReport to target.', async () => {
+    it('dialog should return error, if can not send BugReport to target.', async () => {
 
         await ShowcasePage.navigateTo();
 
@@ -49,23 +49,16 @@ describe('Bug Report', () => {
 
         await browser.wait(EC.stalenessOf(dialogContainer));
 
-        console.log("XX:" + await containerCard.element(by.css('.result')).getText());
-        const result = await containerCard.element(by.css('.result')).getText();
-
-        await expect(result)
+        await expect(containerCard.element(by.css('.result')).getText())
             .toEqual('Result: Error when reporting issue to GitHub (iqb-berlin/non-existing-repo).');
 
-        // at this point we resign from testing the success case since http mockModule for angular
-        // and setting up a complete mock-backend for this single call would be to much overhead
+        // at this point we resign from testing the success case since http mockModule for angular is not supported
         // https://github.com/angular/protractor/blob/88a1b3a30386771bcb84eb6b79d19fa256589f2c/lib/browser.ts#L971-L972
+        // and setting up a complete mock-backend for this single call would be way too much overhead for a single call
     });
-
 
     afterEach(async () => {
-        // Assert that there are no errors emitted from the browser
-        const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-        expect(logs).not.toContain(jasmine.objectContaining({
-            level: logging.Level.SEVERE,
-        } as logging.Entry));
+        await browser.manage().logs().get('browser'); // clears the log!
     });
+
 });
